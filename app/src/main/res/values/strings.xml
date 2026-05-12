@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Planner Disciplina</string>
+    <string name="icone_adicionar_imagem_default">Ícone padrão "Adicionar Imagem"</string>
+    <string name="nome_disciplina">Nome da Disciplina</string>
+    <string name="professor">Professor</string>
+    <string name="sala">Sala</string>
+    <string name="horario">Horário</string>
+    <string name="atualizar_campos">Atualizar campos</string>
+    <string name="remover_disciplina">Remover Disciplina</string>
+    <string name="campo">Campo</string>
+    <string name="acoes">Ações</string>
+    <string name="editar">Editar</string>
+    <string name="remover">Remover</string>
+    <string name="salvar">Salvar</string>
+    <string name="novo_campo">Novo Campo</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="ola">Olá</string>
+    <string name="menu">Menu</string>
+    <string name="adicionar_card">Adicionar Card</string>
+    <string name="fundo_papel">Fundo de Papel</string>
+    <string name="giovanna_victoria_rossetto">Giovanna Victória Rossetto</string>
+    <string name="copyright">Copyright</string>
+</resources>
