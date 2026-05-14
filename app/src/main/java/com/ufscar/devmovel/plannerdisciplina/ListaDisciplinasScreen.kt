@@ -42,7 +42,6 @@ fun ListaDisciplinasScreen(
                         .padding(10.dp)
                 ) {
                     items(mainViewModel.listaDisciplinas) { disciplina ->
-                        Log.i("ListaDisciplinasScreen", "Disciplina id: $disciplina.id")
                         CardDisciplina(mainViewModel = mainViewModel, disciplina = disciplina, onNavigateToAtualizacaoDisciplinaScreen = { onNavigateToAtualizacaoDisciplinaScreen(disciplina.id) })
                     }
                 }

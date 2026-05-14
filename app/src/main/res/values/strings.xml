@@ -21,4 +21,8 @@
     <string name="giovanna_victoria_rossetto">Giovanna Victória Rossetto</string>
     <string name="copyright">Copyright</string>
     <string name="atualizacao_campos">Atualização de Campos</string>
+    <string name="nome_campo">Nome do campo</string>
+    <string name="valor_campo">Valor do campo</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="adicao_campo">Adição de Campo</string>
 </resources>

@@ -148,7 +148,7 @@ fun AtualizacaoDisciplinaScreen(
                                 color = Color.White,
                                 fontSize = 24.sp,
                                 modifier = Modifier
-                                    .background(Color.Black, RoundedCornerShape(6.dp))
+                                    .background(Color(0xFF01037A), RoundedCornerShape(6.dp))
                                     .border(1.dp, Color.Black, RoundedCornerShape(6.dp))
                                     .padding(8.dp)
                             )
@@ -157,7 +157,7 @@ fun AtualizacaoDisciplinaScreen(
                                 color = Color.White,
                                 fontSize = 24.sp,
                                 modifier = Modifier
-                                    .background(Color.Black, RoundedCornerShape(6.dp))
+                                    .background(Color(0xFF01037A), RoundedCornerShape(6.dp))
                                     .border(1.dp, Color.Black, RoundedCornerShape(6.dp))
                                     .padding(8.dp)
                             )
