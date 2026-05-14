@@ -68,7 +68,7 @@ fun AtualizacaoDisciplinaScreen(
     }
 
     Scaffold(
-        topBar = { TopBarListaDisciplinas(mainViewModel = mainViewModel) },
+        topBar = { TopBarAtualizacaoDisciplinas(mainViewModel = mainViewModel) },
         content = { innerPadding ->
             Box(
                 modifier = Modifier
