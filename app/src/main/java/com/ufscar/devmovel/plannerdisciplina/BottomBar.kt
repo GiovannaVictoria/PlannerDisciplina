@@ -62,11 +62,3 @@ fun BottomBar() {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun BottomBarPreview() {
-    PlannerDisciplinaTheme {
-        BottomBar()
-    }
-}

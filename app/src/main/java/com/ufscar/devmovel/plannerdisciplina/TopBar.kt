@@ -36,7 +36,7 @@ import com.ufscar.devmovel.plannerdisciplina.ui.theme.PlannerDisciplinaTheme
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun TopBar(
-    mainViewModel: MainViewModel = viewModel()
+    mainViewModel: MainViewModel
 ) {
     Box(
         modifier = Modifier
@@ -89,13 +89,5 @@ fun TopBar(
             },
             colors = TopAppBarDefaults.topAppBarColors(Color(0xFF01037A))
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun TopBarPreview() {
-    PlannerDisciplinaTheme {
-        TopBar()
     }
 }

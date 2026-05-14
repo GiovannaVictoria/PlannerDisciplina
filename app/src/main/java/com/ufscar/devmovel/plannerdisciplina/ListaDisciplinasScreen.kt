@@ -1,8 +1,8 @@
 package com.ufscar.devmovel.plannerdisciplina
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
@@ -14,23 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import androidx.navigation.NavHost
-import androidx.navigation.compose.rememberNavController
-import com.ufscar.devmovel.plannerdisciplina.ui.theme.PlannerDisciplinaTheme
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun TelaPrincipal(
-    mainViewModel: MainViewModel = viewModel()
+fun ListaDisciplinasScreen(
+    mainViewModel: MainViewModel,
+    onNavigateToAtualizacaoCardDialog: (disciplinaId: Int) -> Unit
 ) {
-    val navController = rememberNavController()
-
     Scaffold(
-        topBar = { TopBar() },
+        topBar = { TopBar(mainViewModel = mainViewModel) },
         content = { innerPadding ->
             Box(
                 modifier = Modifier
@@ -49,33 +42,12 @@ fun TelaPrincipal(
                         .padding(10.dp)
                 ) {
                     items(mainViewModel.listaDisciplinas) { disciplina ->
-                        CardDisciplina(disciplina)
+                        Log.i("ListaDisciplinasScreen", "Disciplina id: $disciplina.id")
+                        CardDisciplina(mainViewModel = mainViewModel, disciplina = disciplina, onNavigateToAtualizacaoCardDialog = { onNavigateToAtualizacaoCardDialog(disciplina.id) })
                     }
-                }
-                if (mainViewModel.disciplinaSendoEditada != null) {
-                    AtualizacaoCardDialog(disciplina = mainViewModel.disciplinaSendoEditada!!)
                 }
             }
         },
         bottomBar = { BottomBar() }
-    ) {
-        NavHost(
-            navController = navController,
-            startDestination = TelaPrincipal
-        ) {
-            composable<TelaPrincipal> {
-                TelaPrincipal(
-                    mainViewModel = mainViewModel
-                )
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun TelaPrincipalPreview() {
-    PlannerDisciplinaTheme {
-        TelaPrincipal()
-    }
+    )
 }
