@@ -106,7 +106,7 @@ fun AdicaoCampoDialog(
                         )
                     }
                     Button(
-                        onClick = {},
+                        onClick = { mainViewModel.fecharAdicaoCampoDialog() },
                         colors = ButtonDefaults.buttonColors(Color.Red),
                         border = BorderStroke(1.dp, Color.Black),
                         shape = RoundedCornerShape(10.dp)
@@ -122,8 +122,8 @@ fun AdicaoCampoDialog(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun AdicaoCampoDialogPreview() {
-    AdicaoCampoDialog()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun AdicaoCampoDialogPreview() {
+//    AdicaoCampoDialog()
+//}

@@ -406,10 +406,11 @@ fun AtualizacaoDisciplinaScreen(
                             }
                             Button(
                                 onClick = {
-                                    mainViewModel.alterarEstadoTemporarioCampo(
-                                        "teste",
-                                        "testando"
-                                    )
+//                                    mainViewModel.alterarEstadoTemporarioCampo(
+//                                        "teste",
+//                                        "testando"
+//                                    )
+                                    mainViewModel.abrirAdicaoCampoDialog()
                                 },
                                 colors = ButtonDefaults.buttonColors(Color.White),
                                 contentPadding = PaddingValues(8.dp),
@@ -435,6 +436,9 @@ fun AtualizacaoDisciplinaScreen(
                             }
                         }
                     }
+                }
+                if (mainViewModel.adicaoCampoDialogAberto) {
+                    AdicaoCampoDialog(mainViewModel = mainViewModel)
                 }
             }
         },

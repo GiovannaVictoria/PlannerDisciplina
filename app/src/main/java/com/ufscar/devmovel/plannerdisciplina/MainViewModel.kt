@@ -12,6 +12,7 @@ class MainViewModel : ViewModel() {
     var disciplinaSendoEditada by mutableStateOf<Disciplina?>(null)
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
     val listaDisciplinas = mutableStateListOf<Disciplina>()
+    var adicaoCampoDialogAberto by mutableStateOf(false)
 
     fun adicionarDisciplina() {
         val novoId = if (listaDisciplinas.isEmpty()) 0 else listaDisciplinas.maxOf { it.id } + 1
@@ -95,6 +96,14 @@ class MainViewModel : ViewModel() {
             listaDisciplinas[indice] = estadoTemporarioDisciplina.disciplina
             resetarDisciplinaSendoEditada()
         }
+    }
+
+    fun abrirAdicaoCampoDialog() {
+        adicaoCampoDialogAberto = true
+    }
+
+    fun fecharAdicaoCampoDialog() {
+        adicaoCampoDialogAberto = false
     }
 
 }
