@@ -1,6 +1,5 @@
 package com.ufscar.devmovel.plannerdisciplina
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -55,7 +54,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun AtualizacaoCardDialog(
+fun AtualizacaoDisciplinaScreen(
     mainViewModel: MainViewModel,
     disciplinaId: Int,
     onNavigateToListaDisciplinas: () -> Unit
@@ -69,7 +68,7 @@ fun AtualizacaoCardDialog(
     }
 
     Scaffold(
-        topBar = { TopBar(mainViewModel = mainViewModel) },
+        topBar = { TopBarListaDisciplinas(mainViewModel = mainViewModel) },
         content = { innerPadding ->
             Box(
                 modifier = Modifier

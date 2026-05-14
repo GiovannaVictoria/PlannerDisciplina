@@ -20,7 +20,7 @@ fun App() {
         composable<ListaDisciplinas> {
             ListaDisciplinasScreen(
                 mainViewModel = mainViewModel,
-                onNavigateToAtualizacaoCardDialog = { disciplinaId ->
+                onNavigateToAtualizacaoDisciplinaScreen = { disciplinaId ->
                     val disciplina = mainViewModel.listaDisciplinas.find { it.id == disciplinaId }
                     if (disciplina != null) {
                         mainViewModel.setarDisciplinaSendoEditada(disciplina)
@@ -33,7 +33,7 @@ fun App() {
         composable<AtualizacaoCard> { backStackEntry ->
             val rota = backStackEntry.toRoute<AtualizacaoCard>()
 
-            AtualizacaoCardDialog(
+            AtualizacaoDisciplinaScreen(
                 mainViewModel = mainViewModel,
                 disciplinaId = rota.disciplinaId,
                 onNavigateToListaDisciplinas = {

@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 fun ListaDisciplinasScreen(
     mainViewModel: MainViewModel,
-    onNavigateToAtualizacaoCardDialog: (disciplinaId: Int) -> Unit
+    onNavigateToAtualizacaoDisciplinaScreen: (disciplinaId: Int) -> Unit
 ) {
     Scaffold(
-        topBar = { TopBar(mainViewModel = mainViewModel) },
+        topBar = { TopBarListaDisciplinas(mainViewModel = mainViewModel) },
         content = { innerPadding ->
             Box(
                 modifier = Modifier
@@ -43,7 +43,7 @@ fun ListaDisciplinasScreen(
                 ) {
                     items(mainViewModel.listaDisciplinas) { disciplina ->
                         Log.i("ListaDisciplinasScreen", "Disciplina id: $disciplina.id")
-                        CardDisciplina(mainViewModel = mainViewModel, disciplina = disciplina, onNavigateToAtualizacaoCardDialog = { onNavigateToAtualizacaoCardDialog(disciplina.id) })
+                        CardDisciplina(mainViewModel = mainViewModel, disciplina = disciplina, onNavigateToAtualizacaoDisciplinaScreen = { onNavigateToAtualizacaoDisciplinaScreen(disciplina.id) })
                     }
                 }
             }

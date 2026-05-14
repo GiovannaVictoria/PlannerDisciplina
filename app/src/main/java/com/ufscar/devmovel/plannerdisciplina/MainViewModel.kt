@@ -10,7 +10,7 @@ import com.ufscar.devmovel.plannerdisciplina.repository.Disciplina
 class MainViewModel : ViewModel() {
 
     var disciplinaSendoEditada by mutableStateOf<Disciplina?>(null)
-    var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoCardDialog())
+    var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
     val listaDisciplinas = mutableStateListOf<Disciplina>()
 
     fun adicionarDisciplina() {

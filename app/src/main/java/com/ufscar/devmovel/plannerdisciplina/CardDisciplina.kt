@@ -37,7 +37,7 @@ import com.ufscar.devmovel.plannerdisciplina.repository.Disciplina
 fun CardDisciplina(
     disciplina: Disciplina = Disciplina(),
     mainViewModel: MainViewModel,
-    onNavigateToAtualizacaoCardDialog: () -> Unit
+    onNavigateToAtualizacaoDisciplinaScreen: () -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -193,7 +193,7 @@ fun CardDisciplina(
                     .fillMaxWidth()
             ) {
                 Button(
-                    onClick = { onNavigateToAtualizacaoCardDialog() },
+                    onClick = { onNavigateToAtualizacaoDisciplinaScreen() },
                     colors = ButtonDefaults.buttonColors(Color(0xFF06B004)),
                     border = BorderStroke(1.dp, Color.Black),
                     shape = RoundedCornerShape(10.dp)
