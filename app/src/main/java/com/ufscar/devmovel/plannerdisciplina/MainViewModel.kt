@@ -9,11 +9,13 @@ import com.ufscar.devmovel.plannerdisciplina.repository.Disciplina
 
 class MainViewModel : ViewModel() {
 
-    var disciplinaSendoEditada by mutableStateOf<Disciplina?>(null)
+    var disciplinaSendoEditada by mutableStateOf<Disciplina>(Disciplina())
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
     val listaDisciplinas = mutableStateListOf<Disciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina())
+    var nomeCampoErro by mutableStateOf(false)
+    var nomeCampoErroMensagem by mutableStateOf("")
 
     fun adicionarDisciplina() {
         val novoId = if (listaDisciplinas.isEmpty()) 0 else listaDisciplinas.maxOf { it.id } + 1
@@ -35,10 +37,6 @@ class MainViewModel : ViewModel() {
             estadoTemporarioDisciplina.copy(
                 disciplina = disciplina.copy()
             )
-    }
-
-    fun resetarDisciplinaSendoEditada() {
-        disciplinaSendoEditada = null
     }
 
     fun alterarEstadoTemporarioNome(nome: String) {
@@ -66,6 +64,8 @@ class MainViewModel : ViewModel() {
 
     fun alterarCampoTemporarioNome(nome: String) {
         campoTemporario = campoTemporario.copy(nome = nome)
+        nomeCampoErro = false
+        nomeCampoErroMensagem = ""
     }
 
     fun alterarCampoTemporarioValor(valor: String) {
@@ -73,6 +73,21 @@ class MainViewModel : ViewModel() {
     }
 
     fun salvarAlteracoesCampo() {
+        if (campoTemporario.nome.isEmpty()) {
+            nomeCampoErro = true
+            nomeCampoErroMensagem = "Nome do campo não pode ser vazio"
+            return
+        }
+
+        val campoDuplicado = estadoTemporarioDisciplina.disciplina.campos.find{
+            it.nome.equals(campoTemporario.nome, ignoreCase = true)
+        }
+        if (campoDuplicado != null) {
+            nomeCampoErro = true
+            nomeCampoErroMensagem = "Campo já existe"
+            return
+        }
+
         val novoCampo = CampoDisciplina(campoTemporario.nome, campoTemporario.valor)
         val novaLista = estadoTemporarioDisciplina.disciplina.campos.toMutableList()
         novaLista.add(novoCampo)
@@ -100,12 +115,11 @@ class MainViewModel : ViewModel() {
     }
 
     fun salvarAlteracoesDisciplina() {
-        val disciplina = disciplinaSendoEditada ?: return
+        val disciplina = disciplinaSendoEditada
         val indice = listaDisciplinas.indexOfFirst { it.id == disciplina.id }
 
         if (indice != -1) {
             listaDisciplinas[indice] = estadoTemporarioDisciplina.disciplina
-            resetarDisciplinaSendoEditada()
         }
     }
 

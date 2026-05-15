@@ -60,6 +60,18 @@ fun AdicaoCampoDialog(
                 OutlinedTextField(
                     value = mainViewModel.campoTemporario.nome,
                     onValueChange = { mainViewModel.alterarCampoTemporarioNome(it) },
+                    isError = mainViewModel.nomeCampoErro,
+                    supportingText = {
+                        if (mainViewModel.nomeCampoErro) {
+                            Text(
+                                text = mainViewModel.nomeCampoErroMensagem,
+                                color = Color.Red,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            )
+                        }
+                    },
                     label = {
                         Text(
                             text = stringResource(R.string.nome_campo),
