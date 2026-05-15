@@ -158,30 +158,33 @@ fun CardDisciplina(
                 modifier = Modifier
                     .padding(4.dp)
             ) {
-                disciplina.campos.forEach { campo ->
+                disciplina.campos.chunked(3).forEach { grupoCampos ->
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .padding(4.dp)
                     ) {
-                        OutlinedTextField(
-                            value = campo.valor,
-                            onValueChange = {},
-                            label = {
-                                Text(
-                                    text = campo.nome,
+                        grupoCampos.forEach { campo ->
+                            OutlinedTextField(
+                                value = campo.valor,
+                                onValueChange = {},
+                                label = {
+                                    Text(
+                                        text = campo.nome,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                    )
+                                },
+                                textStyle = TextStyle(
                                     textAlign = TextAlign.Center,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                )
-                            },
-                            textStyle = TextStyle(
-                                textAlign = TextAlign.Center,
-                                color = Color.Black
-                            ),
-                            readOnly = true
-                        )
+                                    color = Color.Black
+                                ),
+                                readOnly = true,
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
                     }
                 }
             }
