@@ -17,7 +17,12 @@ class MainViewModel : ViewModel() {
 
     fun adicionarDisciplina() {
         val novoId = if (listaDisciplinas.isEmpty()) 0 else listaDisciplinas.maxOf { it.id } + 1
-        listaDisciplinas.add(Disciplina(id = novoId))
+        val camposIniciais = listOf(
+            CampoDisciplina("Professor", ""),
+            CampoDisciplina("Sala", ""),
+            CampoDisciplina("Horário", ""),
+        )
+        listaDisciplinas.add(Disciplina(id = novoId, campos = camposIniciais))
     }
 
     fun removerDisciplina(disciplina: Disciplina) {
@@ -42,36 +47,6 @@ class MainViewModel : ViewModel() {
                 disciplina =
                     estadoTemporarioDisciplina.disciplina.copy(
                         nome = nome
-                    )
-            )
-    }
-
-    fun alterarEstadoTemporarioProfessor(professor: String) {
-        estadoTemporarioDisciplina =
-            estadoTemporarioDisciplina.copy(
-                disciplina =
-                    estadoTemporarioDisciplina.disciplina.copy(
-                        professor = professor
-                    )
-            )
-    }
-
-    fun alterarEstadoTemporarioSala(sala: String) {
-        estadoTemporarioDisciplina =
-            estadoTemporarioDisciplina.copy(
-                disciplina =
-                    estadoTemporarioDisciplina.disciplina.copy(
-                        sala = sala
-                    )
-            )
-    }
-
-    fun alterarEstadoTemporarioHorario(horario: String) {
-        estadoTemporarioDisciplina =
-            estadoTemporarioDisciplina.copy(
-                disciplina =
-                    estadoTemporarioDisciplina.disciplina.copy(
-                        horario = horario
                     )
             )
     }
