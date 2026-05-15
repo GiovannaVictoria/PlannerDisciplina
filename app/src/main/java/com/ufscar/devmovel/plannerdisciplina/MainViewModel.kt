@@ -13,6 +13,7 @@ class MainViewModel : ViewModel() {
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
     val listaDisciplinas = mutableStateListOf<Disciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
+    var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina())
 
     fun adicionarDisciplina() {
         val novoId = if (listaDisciplinas.isEmpty()) 0 else listaDisciplinas.maxOf { it.id } + 1
@@ -75,8 +76,29 @@ class MainViewModel : ViewModel() {
             )
     }
 
-    fun alterarEstadoTemporarioCampo(nome: String, valor: String) {
-        val novoCampo = CampoDisciplina(nome, valor)
+    fun alterarEstadoTemporarioCampoValor(nome: String, valor: String) {
+        val novaLista = estadoTemporarioDisciplina.disciplina.campos.map { campo ->
+            if (campo.nome == nome) campo.copy(valor = valor)
+            else campo
+        }
+
+        estadoTemporarioDisciplina = estadoTemporarioDisciplina.copy(
+            disciplina = estadoTemporarioDisciplina.disciplina.copy(
+                campos = novaLista
+            )
+        )
+    }
+
+    fun alterarCampoTemporarioNome(nome: String) {
+        campoTemporario = campoTemporario.copy(nome = nome)
+    }
+
+    fun alterarCampoTemporarioValor(valor: String) {
+        campoTemporario = campoTemporario.copy(valor = valor)
+    }
+
+    fun salvarAlteracoesCampo() {
+        val novoCampo = CampoDisciplina(campoTemporario.nome, campoTemporario.valor)
         val novaLista = estadoTemporarioDisciplina.disciplina.campos.toMutableList()
         novaLista.add(novoCampo)
         estadoTemporarioDisciplina =
@@ -86,9 +108,10 @@ class MainViewModel : ViewModel() {
                         campos = novaLista
                     )
             )
+        fecharAdicaoCampoDialog()
     }
 
-    fun salvarAlteracoes() {
+    fun salvarAlteracoesDisciplina() {
         val disciplina = disciplinaSendoEditada ?: return
         val indice = listaDisciplinas.indexOfFirst { it.id == disciplina.id }
 
@@ -99,6 +122,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun abrirAdicaoCampoDialog() {
+        campoTemporario = CampoDisciplina()
         adicaoCampoDialogAberto = true
     }
 

@@ -34,7 +34,7 @@ fun AdicaoCampoDialog(
     mainViewModel: MainViewModel = MainViewModel(),
 ) {
     Dialog(
-        onDismissRequest = {}
+        onDismissRequest = { mainViewModel.fecharAdicaoCampoDialog() }
     ) {
         Card(
             modifier = Modifier
@@ -58,8 +58,8 @@ fun AdicaoCampoDialog(
                     fontWeight = FontWeight.Bold
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = mainViewModel.campoTemporario.nome,
+                    onValueChange = { mainViewModel.alterarCampoTemporarioNome(it) },
                     label = {
                         Text(
                             text = stringResource(R.string.nome_campo),
@@ -73,8 +73,8 @@ fun AdicaoCampoDialog(
                     )
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = mainViewModel.campoTemporario.valor,
+                    onValueChange = { mainViewModel.alterarCampoTemporarioValor(it) },
                     label = {
                         Text(
                             text = stringResource(R.string.valor_campo),
@@ -95,7 +95,7 @@ fun AdicaoCampoDialog(
                         .fillMaxWidth()
                 ) {
                     Button(
-                        onClick = {},
+                        onClick = { mainViewModel.salvarAlteracoesCampo() },
                         colors = ButtonDefaults.buttonColors(Color(0xFF06B004)),
                         border = BorderStroke(1.dp, Color.Black),
                         shape = RoundedCornerShape(10.dp)
@@ -121,9 +121,3 @@ fun AdicaoCampoDialog(
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun AdicaoCampoDialogPreview() {
-//    AdicaoCampoDialog()
-//}

@@ -330,8 +330,10 @@ fun AtualizacaoDisciplinaScreen(
                                         .padding(4.dp)
                                 ) {
                                     OutlinedTextField(
-                                        value = campo.valor,
-                                        onValueChange = {},
+                                        value = mainViewModel.estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == campo.nome }?.valor ?: "",
+                                        onValueChange = { novoValor ->
+                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.nome, novoValor)
+                                        },
                                         label = {
                                             Text(
                                                 text = campo.nome,
@@ -391,7 +393,7 @@ fun AtualizacaoDisciplinaScreen(
                         ) {
                             Button(
                                 onClick = {
-                                    mainViewModel.salvarAlteracoes()
+                                    mainViewModel.salvarAlteracoesDisciplina()
                                     onNavigateToListaDisciplinas()
                                 },
                                 colors = ButtonDefaults.buttonColors(Color(0xFF06B004)),
@@ -406,10 +408,6 @@ fun AtualizacaoDisciplinaScreen(
                             }
                             Button(
                                 onClick = {
-//                                    mainViewModel.alterarEstadoTemporarioCampo(
-//                                        "teste",
-//                                        "testando"
-//                                    )
                                     mainViewModel.abrirAdicaoCampoDialog()
                                 },
                                 colors = ButtonDefaults.buttonColors(Color.White),
