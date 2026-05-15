@@ -86,6 +86,19 @@ class MainViewModel : ViewModel() {
         fecharAdicaoCampoDialog()
     }
 
+    fun removerCampo(nome: String) {
+        val campo = estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == nome }
+        val novaLista = estadoTemporarioDisciplina.disciplina.campos.toMutableList()
+        novaLista.remove(campo)
+        estadoTemporarioDisciplina =
+            estadoTemporarioDisciplina.copy(
+                disciplina =
+                    estadoTemporarioDisciplina.disciplina.copy(
+                        campos = novaLista
+                    )
+            )
+    }
+
     fun salvarAlteracoesDisciplina() {
         val disciplina = disciplinaSendoEditada ?: return
         val indice = listaDisciplinas.indexOfFirst { it.id == disciplina.id }
