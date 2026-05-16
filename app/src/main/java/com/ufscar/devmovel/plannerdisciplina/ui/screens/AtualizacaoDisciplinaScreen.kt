@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.sp
 import com.ufscar.devmovel.plannerdisciplina.ui.components.AdicaoCampoDialog
 import com.ufscar.devmovel.plannerdisciplina.ui.components.BottomBar
 import com.ufscar.devmovel.plannerdisciplina.R
+import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.ui.components.TopBarAtualizacaoDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
@@ -64,13 +65,14 @@ fun AtualizacaoDisciplinaScreen(
     disciplinaId: Int,
     onNavigateToListaDisciplinas: () -> Unit
 ) {
-    val disciplina = mainViewModel.listaDisciplinas.find { it.id == disciplinaId }
+//    val disciplina = mainViewModel.listaDisciplinas.find { it.id == disciplinaId }
+    val disciplina = Disciplina()
 
     // TODO: Melhorar a pagina de "Disciplina nao encontrada"
-    if (disciplina == null) {
-        Text("Disciplina não encontrada")
-        return
-    }
+//    if (disciplina == null) {
+//        Text("Disciplina não encontrada")
+//        return
+//    }
 
     Scaffold(
         topBar = { TopBarAtualizacaoDisciplinas(mainViewModel = mainViewModel) },
@@ -167,74 +169,74 @@ fun AtualizacaoDisciplinaScreen(
                                     .padding(8.dp)
                             )
                         }
-                        Column(
-                            modifier = Modifier
-                                .padding(4.dp)
-                        ) {
-                            mainViewModel.estadoTemporarioDisciplina.disciplina.campos.forEach { campo ->
-                                Row(
-                                    horizontalArrangement = Arrangement.SpaceEvenly,
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier
-                                        .padding(4.dp)
-                                ) {
-                                    OutlinedTextField(
-                                        value = mainViewModel.estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == campo.nome }?.valor ?: "",
-                                        onValueChange = { novoValor ->
-                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.nome, novoValor)
-                                        },
-                                        label = {
-                                            Text(
-                                                text = campo.nome,
-                                                textAlign = TextAlign.Center,
-                                                modifier = Modifier
-                                                    .fillMaxWidth()
-                                            )
-                                        },
-                                        textStyle = TextStyle(
-                                            textAlign = TextAlign.Center,
-                                            color = Color.Black
-                                        ),
-                                        modifier = Modifier
-                                            .fillMaxWidth(0.4f),
-                                        colors = TextFieldDefaults.colors(
-                                            focusedContainerColor = Color.White,
-                                            unfocusedContainerColor = Color.White,
-                                            disabledContainerColor = Color.White
-                                        )
-                                    )
-                                    Spacer(modifier = Modifier.width(10.dp))
-                                    TooltipBox(
-                                        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
-                                        tooltip = { PlainTooltip { Text(text = stringResource(R.string.editar)) } },
-                                        state = rememberTooltipState()
-                                    ) {
-                                        IconButton(onClick = {}) {
-                                            Icon(
-                                                Icons.Filled.Edit,
-                                                contentDescription = stringResource(R.string.editar),
-                                                tint = Color.Black
-                                            )
-                                        }
-                                    }
-                                    TooltipBox(
-                                        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
-                                        tooltip = { PlainTooltip { Text(text = stringResource(R.string.remover)) } },
-                                        state = rememberTooltipState()
-                                    ) {
-                                        IconButton(
-                                            onClick = { mainViewModel.removerCampo(campo.nome) }
-                                        ) {
-                                            Icon(
-                                                Icons.Filled.Delete,
-                                                contentDescription = stringResource(R.string.remover),
-                                                tint = Color.Black
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-                        }
+//                        Column(
+//                            modifier = Modifier
+//                                .padding(4.dp)
+//                        ) {
+//                            mainViewModel.estadoTemporarioDisciplina.disciplina.campos.forEach { campo ->
+//                                Row(
+//                                    horizontalArrangement = Arrangement.SpaceEvenly,
+//                                    verticalAlignment = Alignment.CenterVertically,
+//                                    modifier = Modifier
+//                                        .padding(4.dp)
+//                                ) {
+//                                    OutlinedTextField(
+//                                        value = mainViewModel.estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == campo.nome }?.valor ?: "",
+//                                        onValueChange = { novoValor ->
+//                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.nome, novoValor)
+//                                        },
+//                                        label = {
+//                                            Text(
+//                                                text = campo.nome,
+//                                                textAlign = TextAlign.Center,
+//                                                modifier = Modifier
+//                                                    .fillMaxWidth()
+//                                            )
+//                                        },
+//                                        textStyle = TextStyle(
+//                                            textAlign = TextAlign.Center,
+//                                            color = Color.Black
+//                                        ),
+//                                        modifier = Modifier
+//                                            .fillMaxWidth(0.4f),
+//                                        colors = TextFieldDefaults.colors(
+//                                            focusedContainerColor = Color.White,
+//                                            unfocusedContainerColor = Color.White,
+//                                            disabledContainerColor = Color.White
+//                                        )
+//                                    )
+//                                    Spacer(modifier = Modifier.width(10.dp))
+//                                    TooltipBox(
+//                                        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+//                                        tooltip = { PlainTooltip { Text(text = stringResource(R.string.editar)) } },
+//                                        state = rememberTooltipState()
+//                                    ) {
+//                                        IconButton(onClick = {}) {
+//                                            Icon(
+//                                                Icons.Filled.Edit,
+//                                                contentDescription = stringResource(R.string.editar),
+//                                                tint = Color.Black
+//                                            )
+//                                        }
+//                                    }
+//                                    TooltipBox(
+//                                        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+//                                        tooltip = { PlainTooltip { Text(text = stringResource(R.string.remover)) } },
+//                                        state = rememberTooltipState()
+//                                    ) {
+//                                        IconButton(
+//                                            onClick = { mainViewModel.removerCampo(campo.nome) }
+//                                        ) {
+//                                            Icon(
+//                                                Icons.Filled.Delete,
+//                                                contentDescription = stringResource(R.string.remover),
+//                                                tint = Color.Black
+//                                            )
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
                         Row(
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalAlignment = Alignment.CenterVertically,

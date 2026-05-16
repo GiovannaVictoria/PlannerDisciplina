@@ -20,7 +20,7 @@ import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun TopBarAtualizacaoDisciplinas(
-    mainViewModel: MainViewModel = MainViewModel()
+    mainViewModel: MainViewModel
 ) {
     Box(
         modifier = Modifier

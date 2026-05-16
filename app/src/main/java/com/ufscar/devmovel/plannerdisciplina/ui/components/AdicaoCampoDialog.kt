@@ -31,7 +31,7 @@ import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
 fun AdicaoCampoDialog(
-    mainViewModel: MainViewModel = MainViewModel(),
+    mainViewModel: MainViewModel,
 ) {
     Dialog(
         onDismissRequest = { mainViewModel.fecharAdicaoCampoDialog() }
@@ -107,7 +107,8 @@ fun AdicaoCampoDialog(
                         .fillMaxWidth()
                 ) {
                     Button(
-                        onClick = { mainViewModel.salvarAlteracoesCampo() },
+//                        onClick = { mainViewModel.salvarAlteracoesCampo() },
+                        onClick = {},
                         colors = ButtonDefaults.buttonColors(Color(0xFF06B004)),
                         border = BorderStroke(1.dp, Color.Black),
                         shape = RoundedCornerShape(10.dp)

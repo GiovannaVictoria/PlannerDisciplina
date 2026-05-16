@@ -15,7 +15,7 @@ import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 @Composable
 fun App() {
     val navController = rememberNavController()
-    val mainViewModel: MainViewModel = viewModel()
+    val mainViewModel: MainViewModel = viewModel(factory = AppViewModelProvider.Factory)
     NavHost(
         navController = navController,
         startDestination = ListaDisciplinas
