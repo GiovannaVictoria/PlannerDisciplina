@@ -6,4 +6,4 @@ import kotlinx.serialization.Serializable
 object ListaDisciplinas
 
 @Serializable
-data class AtualizacaoCard(val disciplinaId: Int)
+data class AtualizacaoDisciplina(val disciplinaId: Int)
