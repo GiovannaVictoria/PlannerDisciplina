@@ -21,6 +21,8 @@ class MainViewModel(
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
 //    val listaDisciplinas = disciplinaRepository.getAllDisciplinas()
     val listaDisciplinas = mutableStateListOf<Disciplina>()
+
+    val listaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina(0, 0))
     var nomeCampoErro by mutableStateOf(false)
@@ -36,20 +38,12 @@ class MainViewModel(
     }
 
     fun adicionarDisciplina() {
-//        val novoId = if (listaDisciplinas.isEmpty()) 0 else listaDisciplinas.maxOf { it.id } + 1
-//        val camposIniciais = listOf(
-//            CampoDisciplina("Professor", ""),
-//            CampoDisciplina("Sala", ""),
-//            CampoDisciplina("Horário", ""),
-//        )
-//        listaDisciplinas.add(Disciplina(id = novoId, campos = camposIniciais))
         viewModelScope.launch {
             disciplinaRepository.insertDisciplina(Disciplina())
         }
     }
 
     fun removerDisciplina(disciplina: Disciplina) {
-//        listaDisciplinas.remove(disciplina)
         viewModelScope.launch {
             disciplinaRepository.deleteDisciplina(disciplina)
         }
@@ -61,6 +55,15 @@ class MainViewModel(
             estadoTemporarioDisciplina.copy(
                 disciplina = disciplina.copy()
             )
+    }
+
+    fun setarCamposDisciplina(disciplinaId: Int) {
+        viewModelScope.launch {
+            disciplinaRepository.getCamposDisciplina(disciplinaId).collect {
+                listaCamposDisciplina.clear()
+                it.forEach { campo -> listaCamposDisciplina.add(campo) }
+            }
+        }
     }
 
     fun alterarEstadoTemporarioNome(nome: String) {
@@ -96,7 +99,7 @@ class MainViewModel(
         campoTemporario = campoTemporario.copy(valor = valor)
     }
 
-//    fun salvarAlteracoesCampo() {
+    fun salvarAlteracoesCampo() {
 //        if (campoTemporario.nome.isEmpty()) {
 //            nomeCampoErro = true
 //            nomeCampoErroMensagem = "Nome do campo não pode ser vazio"
@@ -111,7 +114,7 @@ class MainViewModel(
 //            nomeCampoErroMensagem = "Campo já existe"
 //            return
 //        }
-//
+
 //        val novoCampo = CampoDisciplina(campoTemporario.nome, campoTemporario.valor)
 //        val novaLista = estadoTemporarioDisciplina.disciplina.campos.toMutableList()
 //        novaLista.add(novoCampo)
@@ -122,8 +125,11 @@ class MainViewModel(
 //                        campos = novaLista
 //                    )
 //            )
-//        fecharAdicaoCampoDialog()
-//    }
+        viewModelScope.launch {
+            disciplinaRepository.insertCampoDisciplina(campoTemporario)
+        }
+        fecharAdicaoCampoDialog()
+    }
 //
 //    fun removerCampo(nome: String) {
 //        val campo = estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == nome }
@@ -148,7 +154,7 @@ class MainViewModel(
     }
 
     fun abrirAdicaoCampoDialog() {
-        campoTemporario = CampoDisciplina(0, 0)
+        campoTemporario = CampoDisciplina(disciplinaId = disciplinaSendoEditada.id)
         adicaoCampoDialogAberto = true
     }
 

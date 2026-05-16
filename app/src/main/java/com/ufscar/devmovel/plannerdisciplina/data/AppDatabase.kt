@@ -6,8 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ufscar.devmovel.plannerdisciplina.data.dao.DisciplinaDao
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
+import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 
-@Database(entities = [Disciplina::class], version = 1, exportSchema = false)
+@Database(entities = [Disciplina::class, CampoDisciplina::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun disciplinaDao(): DisciplinaDao
 
