@@ -1,6 +1,5 @@
 package com.ufscar.devmovel.plannerdisciplina.navigation
 
-import com.ufscar.devmovel.plannerdisciplina.repository.Disciplina
 import kotlinx.serialization.Serializable
 
 @Serializable

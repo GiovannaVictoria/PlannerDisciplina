@@ -1,4 +1,4 @@
-package com.ufscar.devmovel.plannerdisciplina
+package com.ufscar.devmovel.plannerdisciplina.model
 
 import kotlinx.serialization.Serializable
 

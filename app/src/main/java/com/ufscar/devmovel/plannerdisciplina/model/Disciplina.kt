@@ -1,6 +1,6 @@
-package com.ufscar.devmovel.plannerdisciplina.repository
+package com.ufscar.devmovel.plannerdisciplina.model
 
-import com.ufscar.devmovel.plannerdisciplina.CampoDisciplina
+import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 import kotlinx.serialization.Serializable
 
 @Serializable

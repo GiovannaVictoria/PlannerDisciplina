@@ -1,4 +1,4 @@
-package com.ufscar.devmovel.plannerdisciplina
+package com.ufscar.devmovel.plannerdisciplina.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,6 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.ufscar.devmovel.plannerdisciplina.R
+import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)

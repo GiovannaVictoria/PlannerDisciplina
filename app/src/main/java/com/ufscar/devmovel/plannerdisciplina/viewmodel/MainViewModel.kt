@@ -1,11 +1,14 @@
-package com.ufscar.devmovel.plannerdisciplina
+package com.ufscar.devmovel.plannerdisciplina.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.ufscar.devmovel.plannerdisciplina.repository.Disciplina
+import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
+import com.ufscar.devmovel.plannerdisciplina.ui.state.EstadoAtualizacaoDisciplina
+import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
+import kotlin.collections.remove
 
 class MainViewModel : ViewModel() {
 

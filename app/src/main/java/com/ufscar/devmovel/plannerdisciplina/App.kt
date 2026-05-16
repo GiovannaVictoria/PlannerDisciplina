@@ -8,6 +8,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.ufscar.devmovel.plannerdisciplina.navigation.AtualizacaoCard
 import com.ufscar.devmovel.plannerdisciplina.navigation.ListaDisciplinas
+import com.ufscar.devmovel.plannerdisciplina.ui.screens.AtualizacaoDisciplinaScreen
+import com.ufscar.devmovel.plannerdisciplina.ui.screens.ListaDisciplinasScreen
+import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
 fun App() {
