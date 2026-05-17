@@ -181,9 +181,6 @@ fun AtualizacaoDisciplinaScreen(
                                 ) {
                                     OutlinedTextField(
                                         value = campo.valor,
-//                                        onValueChange = { novoValor ->
-//                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.nome, novoValor)
-//                                        },
                                         onValueChange = { novoValor ->
                                             mainViewModel.alterarEstadoTemporarioCampoValor(campo.id, novoValor)
                                         },

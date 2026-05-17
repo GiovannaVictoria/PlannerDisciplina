@@ -20,7 +20,6 @@ class MainViewModel(
 
     var disciplinaSendoEditada by mutableStateOf<Disciplina>(Disciplina())
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
-//    val listaDisciplinas = disciplinaRepository.getAllDisciplinas()
     val listaDisciplinas = mutableStateListOf<DisciplinaCampos>()
 
     val listaTemporariaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
@@ -139,6 +138,9 @@ class MainViewModel(
     }
 
     fun salvarAlteracoesDisciplina() {
+        viewModelScope.launch {
+            disciplinaRepository.updateNomeDisciplina(estadoTemporarioDisciplina.disciplina.id, estadoTemporarioDisciplina.disciplina.nome)
+        }
         listaTemporariaCamposDisciplina.forEach { campo ->
             viewModelScope.launch {
                 disciplinaRepository.upsertCampoDisciplina(campo)

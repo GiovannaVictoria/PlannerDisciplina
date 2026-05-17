@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import androidx.room.Upsert
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
@@ -19,8 +20,8 @@ interface DisciplinaDao {
     @Upsert
     suspend fun upsertCampoDisciplina(campoDisciplina: CampoDisciplina)
 
-    @Query("SELECT * FROM disciplina")
-    fun getAllDisciplinas(): Flow<List<Disciplina>>
+    @Query("UPDATE disciplina SET nome = :nome WHERE id = :id")
+    suspend fun updateNomeDisciplina(id: Int, nome: String)
 
     @Transaction
     @Query("SELECT * FROM disciplina")

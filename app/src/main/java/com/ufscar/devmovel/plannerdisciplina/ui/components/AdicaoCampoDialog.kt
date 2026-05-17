@@ -108,7 +108,6 @@ fun AdicaoCampoDialog(
                 ) {
                     Button(
                         onClick = { mainViewModel.salvarAlteracoesCampo() },
-//                        onClick = {},
                         colors = ButtonDefaults.buttonColors(Color(0xFF06B004)),
                         border = BorderStroke(1.dp, Color.Black),
                         shape = RoundedCornerShape(10.dp)

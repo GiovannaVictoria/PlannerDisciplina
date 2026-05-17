@@ -9,7 +9,7 @@ class DisciplinaRepository(private val disciplinaDao: DisciplinaDao) {
 
     suspend fun upsertCampoDisciplina(campoDisciplina: CampoDisciplina) = disciplinaDao.upsertCampoDisciplina(campoDisciplina)
 
-    fun getAllDisciplinas() = disciplinaDao.getAllDisciplinas()
+    suspend fun updateNomeDisciplina(id: Int, nome: String) = disciplinaDao.updateNomeDisciplina(id, nome)
 
     fun getAllDisciplinaCampos() = disciplinaDao.getAllDisciplinaCampos()
 
