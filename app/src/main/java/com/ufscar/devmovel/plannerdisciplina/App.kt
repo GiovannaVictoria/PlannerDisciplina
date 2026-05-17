@@ -26,7 +26,7 @@ fun App() {
                 onNavigateToAtualizacaoDisciplinaScreen = { disciplinaId ->
                     val disciplinaCampo = mainViewModel.listaDisciplinas.find { it.disciplina.id == disciplinaId }
                     if (disciplinaCampo != null) {
-                        mainViewModel.setarDisciplinaSendoEditada(disciplinaCampo.disciplina)
+                        mainViewModel.setarEstadoTemporarioDisciplina(disciplinaCampo.disciplina)
                         navController.navigate(AtualizacaoDisciplina(disciplinaId = disciplinaId))
                     }
                 }

@@ -17,8 +17,6 @@ import kotlin.collections.remove
 class MainViewModel(
     private val disciplinaRepository: DisciplinaRepository
 ) : ViewModel() {
-
-    var disciplinaSendoEditada by mutableStateOf<Disciplina>(Disciplina())
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
     val listaDisciplinas = mutableStateListOf<DisciplinaCampos>()
 
@@ -50,8 +48,7 @@ class MainViewModel(
         }
     }
 
-    fun setarDisciplinaSendoEditada(disciplina: Disciplina) {
-        disciplinaSendoEditada = disciplina
+    fun setarEstadoTemporarioDisciplina(disciplina: Disciplina) {
         estadoTemporarioDisciplina =
             estadoTemporarioDisciplina.copy(
                 disciplina = disciplina.copy()
@@ -100,34 +97,22 @@ class MainViewModel(
     }
 
     fun salvarAlteracoesCampo() {
-//        if (campoTemporario.nome.isEmpty()) {
-//            nomeCampoErro = true
-//            nomeCampoErroMensagem = "Nome do campo não pode ser vazio"
-//            return
-//        }
-//
-//        val campoDuplicado = estadoTemporarioDisciplina.disciplina.campos.find{
-//            it.nome.equals(campoTemporario.nome, ignoreCase = true)
-//        }
-//        if (campoDuplicado != null) {
-//            nomeCampoErro = true
-//            nomeCampoErroMensagem = "Campo já existe"
-//            return
-//        }
+        if (campoTemporario.nome.isEmpty()) {
+            nomeCampoErro = true
+            nomeCampoErroMensagem = "Nome do campo não pode ser vazio"
+            return
+        }
 
-//        val novoCampo = CampoDisciplina(campoTemporario.nome, campoTemporario.valor)
-//        val novaLista = estadoTemporarioDisciplina.disciplina.campos.toMutableList()
-//        novaLista.add(novoCampo)
-//        estadoTemporarioDisciplina =
-//            estadoTemporarioDisciplina.copy(
-//                disciplina =
-//                    estadoTemporarioDisciplina.disciplina.copy(
-//                        campos = novaLista
-//                    )
-//            )
-//        viewModelScope.launch {
-//            disciplinaRepository.insertCampoDisciplina(campoTemporario)
-//        }
+        val campoDuplicado =
+            listaTemporariaCamposDisciplina.find {
+                it.nome.equals(campoTemporario.nome, ignoreCase = true) && it.id != campoTemporario.id
+            }
+        if (campoDuplicado != null) {
+            nomeCampoErro = true
+            nomeCampoErroMensagem = "Campo já existe"
+            return
+        }
+
         listaTemporariaCamposDisciplina.add(campoTemporario)
         fecharAdicaoCampoDialog()
     }
@@ -154,7 +139,7 @@ class MainViewModel(
     }
 
     fun abrirAdicaoCampoDialog() {
-        campoTemporario = CampoDisciplina(disciplinaId = disciplinaSendoEditada.id)
+        campoTemporario = CampoDisciplina(disciplinaId = estadoTemporarioDisciplina.disciplina.id)
         adicaoCampoDialogAberto = true
     }
 
