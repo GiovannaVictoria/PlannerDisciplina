@@ -227,8 +227,7 @@ fun AtualizacaoDisciplinaScreen(
                                         state = rememberTooltipState()
                                     ) {
                                         IconButton(
-//                                            onClick = { mainViewModel.removerCampo(campo.nome) }
-                                            onClick = {}
+                                            onClick = { mainViewModel.removerCampo(campo) }
                                         ) {
                                             Icon(
                                                 Icons.Filled.Delete,

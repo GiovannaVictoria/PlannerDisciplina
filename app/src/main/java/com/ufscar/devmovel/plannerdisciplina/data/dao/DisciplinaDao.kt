@@ -31,4 +31,7 @@ interface DisciplinaDao {
 
     @Delete
     suspend fun deleteDisciplina(disciplina: Disciplina)
+
+    @Delete
+    suspend fun deleteCampoDisciplina(campoDisciplina: CampoDisciplina)
 }

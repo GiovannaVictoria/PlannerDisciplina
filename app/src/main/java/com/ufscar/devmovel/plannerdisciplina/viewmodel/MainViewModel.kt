@@ -24,6 +24,7 @@ class MainViewModel(
     val listaDisciplinas = mutableStateListOf<DisciplinaCampos>()
 
     val listaTemporariaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
+    val listaRemocaoCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina(0, 0))
     var nomeCampoErro by mutableStateOf(false)
@@ -59,6 +60,7 @@ class MainViewModel(
     }
 
     fun setarCamposDisciplina(disciplinaId: Int) {
+        listaRemocaoCamposDisciplina.clear()
         viewModelScope.launch {
             disciplinaRepository.getCamposDisciplina(disciplinaId).collect {
                 listaTemporariaCamposDisciplina.clear()
@@ -130,24 +132,21 @@ class MainViewModel(
         listaTemporariaCamposDisciplina.add(campoTemporario)
         fecharAdicaoCampoDialog()
     }
-//
-//    fun removerCampo(nome: String) {
-//        val campo = estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == nome }
-//        val novaLista = estadoTemporarioDisciplina.disciplina.campos.toMutableList()
-//        novaLista.remove(campo)
-//        estadoTemporarioDisciplina =
-//            estadoTemporarioDisciplina.copy(
-//                disciplina =
-//                    estadoTemporarioDisciplina.disciplina.copy(
-//                        campos = novaLista
-//                    )
-//            )
-//    }
+
+    fun removerCampo(campo: CampoDisciplina) {
+        listaTemporariaCamposDisciplina.remove(campo)
+        listaRemocaoCamposDisciplina.add(campo)
+    }
 
     fun salvarAlteracoesDisciplina() {
         listaTemporariaCamposDisciplina.forEach { campo ->
             viewModelScope.launch {
                 disciplinaRepository.upsertCampoDisciplina(campo)
+            }
+        }
+        listaRemocaoCamposDisciplina.forEach { campo ->
+            viewModelScope.launch {
+                disciplinaRepository.deleteCampoDisciplina(campo)
             }
         }
     }

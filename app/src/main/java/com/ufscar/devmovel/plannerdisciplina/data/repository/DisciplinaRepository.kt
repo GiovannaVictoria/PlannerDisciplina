@@ -16,4 +16,6 @@ class DisciplinaRepository(private val disciplinaDao: DisciplinaDao) {
     fun getCamposDisciplina(disciplinaId: Int) = disciplinaDao.getCamposDisciplina(disciplinaId)
 
     suspend fun deleteDisciplina(disciplina: Disciplina) = disciplinaDao.deleteDisciplina(disciplina)
+
+    suspend fun deleteCampoDisciplina(campoDisciplina: CampoDisciplina) = disciplinaDao.deleteCampoDisciplina(campoDisciplina)
 }
