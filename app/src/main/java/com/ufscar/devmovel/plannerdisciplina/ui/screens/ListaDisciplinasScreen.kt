@@ -14,12 +14,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.ufscar.devmovel.plannerdisciplina.ui.components.BottomBar
+import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.BottomBar
 import com.ufscar.devmovel.plannerdisciplina.ui.components.CardDisciplina
 import com.ufscar.devmovel.plannerdisciplina.R
-import com.ufscar.devmovel.plannerdisciplina.ui.components.TopBarListaDisciplinas
+import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.TopBarListaDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
-import com.ufscar.devmovel.plannerdisciplina.ui.components.ConfirmacaoRemocaoDisciplinaDialog
+import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.ConfirmacaoRemocaoDisciplinaDialog
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)

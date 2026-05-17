@@ -1,4 +1,4 @@
-package com.ufscar.devmovel.plannerdisciplina.ui.components
+package com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

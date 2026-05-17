@@ -1,4 +1,4 @@
-package com.ufscar.devmovel.plannerdisciplina.ui.components
+package com.ufscar.devmovel.plannerdisciplina.ui.components.bars
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

@@ -51,11 +51,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ufscar.devmovel.plannerdisciplina.ui.components.AdicaoCampoDialog
-import com.ufscar.devmovel.plannerdisciplina.ui.components.BottomBar
+import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.AdicaoCampoDialog
+import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.BottomBar
 import com.ufscar.devmovel.plannerdisciplina.R
-import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
-import com.ufscar.devmovel.plannerdisciplina.ui.components.TopBarAtualizacaoDisciplinas
+import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.TopBarAtualizacaoDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
