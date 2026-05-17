@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 import com.ufscar.devmovel.plannerdisciplina.model.DisciplinaCampos
@@ -15,8 +16,8 @@ interface DisciplinaDao {
     @Insert
     suspend fun insertDisciplina(disciplina: Disciplina)
 
-    @Insert
-    suspend fun insertCampoDisciplina(campoDisciplina: CampoDisciplina)
+    @Upsert
+    suspend fun upsertCampoDisciplina(campoDisciplina: CampoDisciplina)
 
     @Query("SELECT * FROM disciplina")
     fun getAllDisciplinas(): Flow<List<Disciplina>>

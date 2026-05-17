@@ -77,18 +77,16 @@ class MainViewModel(
             )
     }
 
-//    fun alterarEstadoTemporarioCampoValor(nome: String, valor: String) {
-//        val novaLista = estadoTemporarioDisciplina.disciplina.campos.map { campo ->
-//            if (campo.nome == nome) campo.copy(valor = valor)
-//            else campo
-//        }
-//
-//        estadoTemporarioDisciplina = estadoTemporarioDisciplina.copy(
-//            disciplina = estadoTemporarioDisciplina.disciplina.copy(
-//                campos = novaLista
-//            )
-//        )
-//    }
+    fun alterarEstadoTemporarioCampoValor(campoId: Int, novoValor: String) {
+        val indice = listaTemporariaCamposDisciplina.indexOfFirst { it.id == campoId }
+
+        if (indice != -1) {
+            listaTemporariaCamposDisciplina[indice] =
+                listaTemporariaCamposDisciplina[indice].copy(
+                        valor = novoValor
+                )
+        }
+    }
 
     fun alterarCampoTemporarioNome(nome: String) {
         campoTemporario = campoTemporario.copy(nome = nome)
@@ -149,7 +147,7 @@ class MainViewModel(
     fun salvarAlteracoesDisciplina() {
         listaTemporariaCamposDisciplina.forEach { campo ->
             viewModelScope.launch {
-                disciplinaRepository.insertCampoDisciplina(campo)
+                disciplinaRepository.upsertCampoDisciplina(campo)
             }
         }
     }

@@ -7,7 +7,7 @@ import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 class DisciplinaRepository(private val disciplinaDao: DisciplinaDao) {
     suspend fun insertDisciplina(disciplina: Disciplina) = disciplinaDao.insertDisciplina(disciplina)
 
-    suspend fun insertCampoDisciplina(campoDisciplina: CampoDisciplina) = disciplinaDao.insertCampoDisciplina(campoDisciplina)
+    suspend fun upsertCampoDisciplina(campoDisciplina: CampoDisciplina) = disciplinaDao.upsertCampoDisciplina(campoDisciplina)
 
     fun getAllDisciplinas() = disciplinaDao.getAllDisciplinas()
 

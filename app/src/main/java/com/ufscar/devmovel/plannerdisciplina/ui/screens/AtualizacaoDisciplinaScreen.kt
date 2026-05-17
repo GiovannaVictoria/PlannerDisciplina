@@ -184,7 +184,9 @@ fun AtualizacaoDisciplinaScreen(
 //                                        onValueChange = { novoValor ->
 //                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.nome, novoValor)
 //                                        },
-                                        onValueChange = {},
+                                        onValueChange = { novoValor ->
+                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.id, novoValor)
+                                        },
                                         label = {
                                             Text(
                                                 text = campo.nome,
