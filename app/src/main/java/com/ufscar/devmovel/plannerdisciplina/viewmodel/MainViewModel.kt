@@ -105,7 +105,7 @@ class MainViewModel(
 
         val campoDuplicado =
             listaTemporariaCamposDisciplina.find {
-                it.nome.equals(campoTemporario.nome, ignoreCase = true) && it.id != campoTemporario.id
+                it.nome.equals(campoTemporario.nome, ignoreCase = true)
             }
         if (campoDuplicado != null) {
             nomeCampoErro = true
