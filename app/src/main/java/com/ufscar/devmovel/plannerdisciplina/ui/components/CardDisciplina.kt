@@ -149,7 +149,7 @@ fun CardDisciplina(
                     )
                 }
                 Button(
-                    onClick = { mainViewModel.removerDisciplina(disciplinaCampos.disciplina) },
+                    onClick = { mainViewModel.abrirConfirmacaoRemocaoDisciplinaDialog() },
                     colors = ButtonDefaults.buttonColors(Color.Red),
                     border = BorderStroke(1.dp, Color.Black),
                     shape = RoundedCornerShape(10.dp)

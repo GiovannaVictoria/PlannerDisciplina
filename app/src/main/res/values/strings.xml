@@ -25,4 +25,6 @@
     <string name="valor_campo">Valor do campo</string>
     <string name="adicionar">Adicionar</string>
     <string name="adicao_campo">Adição de Campo</string>
+    <string name="confirmacao_remocao_disciplina">Remover disciplina?</string>
+    <string name="explicacao_remocao_disciplina">Todos os dados desta disciplina serão apagados permanentemente.</string>
 </resources>

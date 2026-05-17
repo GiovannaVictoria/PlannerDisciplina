@@ -19,6 +19,7 @@ import com.ufscar.devmovel.plannerdisciplina.ui.components.CardDisciplina
 import com.ufscar.devmovel.plannerdisciplina.R
 import com.ufscar.devmovel.plannerdisciplina.ui.components.TopBarListaDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
+import com.ufscar.devmovel.plannerdisciplina.ui.components.ConfirmacaoRemocaoDisciplinaDialog
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,6 +53,9 @@ fun ListaDisciplinasScreen(
                             onNavigateToAtualizacaoDisciplinaScreen = {
                                 onNavigateToAtualizacaoDisciplinaScreen(disciplinaCampos.disciplina.id)
                             })
+                        if (mainViewModel.confirmacaoRemocaoDisciplinaDialogAberto) {
+                            ConfirmacaoRemocaoDisciplinaDialog(mainViewModel = mainViewModel, disciplina = disciplinaCampos.disciplina)
+                        }
                     }
                 }
             }
