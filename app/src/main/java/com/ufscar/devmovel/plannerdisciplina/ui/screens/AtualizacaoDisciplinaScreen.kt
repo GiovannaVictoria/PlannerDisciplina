@@ -55,6 +55,7 @@ import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.AdicaoCampoDi
 import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.BottomBar
 import com.ufscar.devmovel.plannerdisciplina.R
 import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.TopBarAtualizacaoDisciplinas
+import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.CancelarAlteracoesCamposDialog
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
@@ -258,9 +259,7 @@ fun AtualizacaoDisciplinaScreen(
                                 )
                             }
                             Button(
-                                onClick = {
-                                    mainViewModel.abrirAdicaoCampoDialog()
-                                },
+                                onClick = { mainViewModel.abrirAdicaoCampoDialog() },
                                 colors = ButtonDefaults.buttonColors(Color.White),
                                 contentPadding = PaddingValues(8.dp),
                                 shape = RoundedCornerShape(10.dp),
@@ -272,7 +271,8 @@ fun AtualizacaoDisciplinaScreen(
                                 )
                             }
                             Button(
-                                onClick = { onNavigateToListaDisciplinas() },
+//                                onClick = { onNavigateToListaDisciplinas() },
+                                onClick = { mainViewModel.abrirCancelarAlteracoesCamposDialog() },
                                 colors = ButtonDefaults.buttonColors(Color.Red),
                                 contentPadding = PaddingValues(8.dp),
                                 shape = RoundedCornerShape(10.dp),
@@ -288,6 +288,9 @@ fun AtualizacaoDisciplinaScreen(
                 }
                 if (mainViewModel.adicaoCampoDialogAberto) {
                     AdicaoCampoDialog(mainViewModel = mainViewModel)
+                }
+                if (mainViewModel.cancelarAlteracoesCamposDialogAberto) {
+                    CancelarAlteracoesCamposDialog(mainViewModel = mainViewModel, onNavigateToListaDisciplinas = onNavigateToListaDisciplinas)
                 }
             }
         },

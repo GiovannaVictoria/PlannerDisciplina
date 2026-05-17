@@ -21,7 +21,7 @@ import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
-fun ConfirmacaoRemocaoDisciplinaDialog(
+fun RemoverDisciplinaDialog(
     mainViewModel: MainViewModel,
     disciplina: Disciplina
 ) {
@@ -53,7 +53,7 @@ fun ConfirmacaoRemocaoDisciplinaDialog(
                 shape = RoundedCornerShape(10.dp)
             ) {
                 Text(
-                    text = "Remover",
+                    text = stringResource(R.string.remover),
                     color = Color.White
                 )
             }
@@ -66,7 +66,7 @@ fun ConfirmacaoRemocaoDisciplinaDialog(
                 shape = RoundedCornerShape(10.dp)
             ) {
                 Text(
-                    text = "Voltar",
+                    text = stringResource(R.string.voltar),
                     color = Color.Red
                 )
             }

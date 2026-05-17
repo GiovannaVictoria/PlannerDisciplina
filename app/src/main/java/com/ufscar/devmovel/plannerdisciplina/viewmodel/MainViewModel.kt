@@ -23,7 +23,8 @@ class MainViewModel(
     val listaTemporariaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     val listaRemocaoCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
-    var confirmacaoRemocaoDisciplinaDialogAberto by mutableStateOf(false)
+    var removerDisciplinaDialogAberto by mutableStateOf(false)
+    var cancelarAlteracoesCamposDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina(0, 0))
     var nomeCampoErro by mutableStateOf(false)
     var nomeCampoErroMensagem by mutableStateOf("")
@@ -47,7 +48,7 @@ class MainViewModel(
         viewModelScope.launch {
             disciplinaRepository.deleteDisciplina(disciplina)
         }
-        confirmacaoRemocaoDisciplinaDialogAberto = false
+        removerDisciplinaDialogAberto = false
     }
 
     fun setarEstadoTemporarioDisciplina(disciplina: Disciplina) {
@@ -150,11 +151,19 @@ class MainViewModel(
     }
 
     fun abrirConfirmacaoRemocaoDisciplinaDialog() {
-        confirmacaoRemocaoDisciplinaDialogAberto = true
+        removerDisciplinaDialogAberto = true
     }
 
     fun fecharConfirmacaoRemocaoDisciplinaDialog() {
-        confirmacaoRemocaoDisciplinaDialogAberto = false
+        removerDisciplinaDialogAberto = false
+    }
+
+    fun abrirCancelarAlteracoesCamposDialog() {
+        cancelarAlteracoesCamposDialogAberto = true
+    }
+
+    fun fecharCancelarAlteracoesCamposDialog() {
+        cancelarAlteracoesCamposDialogAberto = false
     }
 
 }

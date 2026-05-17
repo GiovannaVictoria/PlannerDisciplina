@@ -19,7 +19,7 @@ import com.ufscar.devmovel.plannerdisciplina.ui.components.CardDisciplina
 import com.ufscar.devmovel.plannerdisciplina.R
 import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.TopBarListaDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
-import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.ConfirmacaoRemocaoDisciplinaDialog
+import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.RemoverDisciplinaDialog
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,8 +53,8 @@ fun ListaDisciplinasScreen(
                             onNavigateToAtualizacaoDisciplinaScreen = {
                                 onNavigateToAtualizacaoDisciplinaScreen(disciplinaCampos.disciplina.id)
                             })
-                        if (mainViewModel.confirmacaoRemocaoDisciplinaDialogAberto) {
-                            ConfirmacaoRemocaoDisciplinaDialog(mainViewModel = mainViewModel, disciplina = disciplinaCampos.disciplina)
+                        if (mainViewModel.removerDisciplinaDialogAberto) {
+                            RemoverDisciplinaDialog(mainViewModel = mainViewModel, disciplina = disciplinaCampos.disciplina)
                         }
                     }
                 }
