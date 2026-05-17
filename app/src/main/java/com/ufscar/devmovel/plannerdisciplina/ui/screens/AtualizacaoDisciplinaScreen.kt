@@ -65,11 +65,10 @@ fun AtualizacaoDisciplinaScreen(
     disciplinaId: Int,
     onNavigateToListaDisciplinas: () -> Unit
 ) {
-    val disciplina = mainViewModel.listaDisciplinas.find { it.id == disciplinaId }
-//    val disciplina = Disciplina()
+    val disciplinaCampo = mainViewModel.listaDisciplinas.find { it.disciplina.id == disciplinaId }
 
     // TODO: Melhorar a pagina de "Disciplina nao encontrada"
-    if (disciplina == null) {
+    if (disciplinaCampo == null) {
         Text("Disciplina não encontrada")
         return
     }
@@ -131,7 +130,7 @@ fun AtualizacaoDisciplinaScreen(
                                     )
                                 )
                                 LinearProgressIndicator(
-                                    progress = { disciplina.progresso },
+                                    progress = { disciplinaCampo.disciplina.progresso },
                                     modifier = Modifier
                                         .height(16.dp)
                                         .border(1.dp, Color.Black),
@@ -173,7 +172,7 @@ fun AtualizacaoDisciplinaScreen(
                             modifier = Modifier
                                 .padding(4.dp)
                         ) {
-                            mainViewModel.listaCamposDisciplina.forEach { campo ->
+                            mainViewModel.listaTemporariaCamposDisciplina.forEach { campo ->
                                 Row(
                                     horizontalArrangement = Arrangement.SpaceEvenly,
                                     verticalAlignment = Alignment.CenterVertically,
@@ -181,8 +180,7 @@ fun AtualizacaoDisciplinaScreen(
                                         .padding(4.dp)
                                 ) {
                                     OutlinedTextField(
-//                                        value = mainViewModel.estadoTemporarioDisciplina.disciplina.campos.find{ it.nome == campo.nome }?.valor ?: "",
-                                        value = campo.nome,
+                                        value = campo.valor,
 //                                        onValueChange = { novoValor ->
 //                                            mainViewModel.alterarEstadoTemporarioCampoValor(campo.nome, novoValor)
 //                                        },

@@ -33,11 +33,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ufscar.devmovel.plannerdisciplina.R
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
+import com.ufscar.devmovel.plannerdisciplina.model.DisciplinaCampos
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
 fun CardDisciplina(
-    disciplina: Disciplina = Disciplina(),
+    disciplinaCampos: DisciplinaCampos,
     mainViewModel: MainViewModel,
     onNavigateToAtualizacaoDisciplinaScreen: () -> Unit
 ) {
@@ -74,13 +75,13 @@ fun CardDisciplina(
                         .padding(4.dp)
                 ) {
                     Text(
-                        text = disciplina.nome,
+                        text = disciplinaCampos.disciplina.nome,
                         fontSize = 24.sp,
                         textAlign = TextAlign.Center,
                         color = Color.Black
                     )
                     LinearProgressIndicator(
-                        progress = { disciplina.progresso },
+                        progress = { disciplinaCampos.disciplina.progresso },
                         modifier = Modifier
                             .height(16.dp)
                             .border(1.dp, Color.Black),
@@ -96,7 +97,7 @@ fun CardDisciplina(
                 modifier = Modifier
                     .padding(4.dp)
             ) {
-                mainViewModel.listaCamposDisciplina.chunked(3).forEach { grupoCampos ->
+                disciplinaCampos.campos.chunked(3).forEach { grupoCampos ->
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -135,7 +136,7 @@ fun CardDisciplina(
             ) {
                 Button(
                     onClick = {
-                        mainViewModel.setarCamposDisciplina(disciplina.id)
+                        mainViewModel.setarCamposDisciplina(disciplinaCampos.disciplina.id)
                         onNavigateToAtualizacaoDisciplinaScreen()
                     },
                     colors = ButtonDefaults.buttonColors(Color(0xFF06B004)),
@@ -148,7 +149,7 @@ fun CardDisciplina(
                     )
                 }
                 Button(
-                    onClick = { mainViewModel.removerDisciplina(disciplina) },
+                    onClick = { mainViewModel.removerDisciplina(disciplinaCampos.disciplina) },
                     colors = ButtonDefaults.buttonColors(Color.Red),
                     border = BorderStroke(1.dp, Color.Black),
                     shape = RoundedCornerShape(10.dp)

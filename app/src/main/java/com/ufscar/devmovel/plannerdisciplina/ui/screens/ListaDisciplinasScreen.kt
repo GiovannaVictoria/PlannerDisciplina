@@ -45,12 +45,12 @@ fun ListaDisciplinasScreen(
                     modifier = Modifier
                         .padding(10.dp)
                 ) {
-                    items(mainViewModel.listaDisciplinas) { disciplina ->
+                    items(mainViewModel.listaDisciplinas) { disciplinaCampos ->
                         CardDisciplina(
                             mainViewModel = mainViewModel,
-                            disciplina = disciplina,
+                            disciplinaCampos = disciplinaCampos,
                             onNavigateToAtualizacaoDisciplinaScreen = {
-                                onNavigateToAtualizacaoDisciplinaScreen(disciplina.id)
+                                onNavigateToAtualizacaoDisciplinaScreen(disciplinaCampos.disciplina.id)
                             })
                     }
                 }

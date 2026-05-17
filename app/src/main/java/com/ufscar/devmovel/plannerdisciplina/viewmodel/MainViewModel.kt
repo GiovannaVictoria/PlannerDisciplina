@@ -10,6 +10,7 @@ import com.ufscar.devmovel.plannerdisciplina.data.repository.DisciplinaRepositor
 import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 import com.ufscar.devmovel.plannerdisciplina.ui.state.EstadoAtualizacaoDisciplina
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
+import com.ufscar.devmovel.plannerdisciplina.model.DisciplinaCampos
 import kotlinx.coroutines.launch
 import kotlin.collections.remove
 
@@ -20,9 +21,9 @@ class MainViewModel(
     var disciplinaSendoEditada by mutableStateOf<Disciplina>(Disciplina())
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
 //    val listaDisciplinas = disciplinaRepository.getAllDisciplinas()
-    val listaDisciplinas = mutableStateListOf<Disciplina>()
+    val listaDisciplinas = mutableStateListOf<DisciplinaCampos>()
 
-    val listaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
+    val listaTemporariaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina(0, 0))
     var nomeCampoErro by mutableStateOf(false)
@@ -30,7 +31,7 @@ class MainViewModel(
 
     init {
         viewModelScope.launch {
-            disciplinaRepository.getAllDisciplinas().collect {
+            disciplinaRepository.getAllDisciplinaCampos().collect {
                 listaDisciplinas.clear()
                 it.forEach { disciplina -> listaDisciplinas.add(disciplina) }
             }
@@ -60,8 +61,8 @@ class MainViewModel(
     fun setarCamposDisciplina(disciplinaId: Int) {
         viewModelScope.launch {
             disciplinaRepository.getCamposDisciplina(disciplinaId).collect {
-                listaCamposDisciplina.clear()
-                it.forEach { campo -> listaCamposDisciplina.add(campo) }
+                listaTemporariaCamposDisciplina.clear()
+                it.forEach { campo -> listaTemporariaCamposDisciplina.add(campo) }
             }
         }
     }
@@ -125,9 +126,10 @@ class MainViewModel(
 //                        campos = novaLista
 //                    )
 //            )
-        viewModelScope.launch {
-            disciplinaRepository.insertCampoDisciplina(campoTemporario)
-        }
+//        viewModelScope.launch {
+//            disciplinaRepository.insertCampoDisciplina(campoTemporario)
+//        }
+        listaTemporariaCamposDisciplina.add(campoTemporario)
         fecharAdicaoCampoDialog()
     }
 //
@@ -145,11 +147,10 @@ class MainViewModel(
 //    }
 
     fun salvarAlteracoesDisciplina() {
-        val disciplina = disciplinaSendoEditada
-        val indice = listaDisciplinas.indexOfFirst { it.id == disciplina.id }
-
-        if (indice != -1) {
-            listaDisciplinas[indice] = estadoTemporarioDisciplina.disciplina
+        listaTemporariaCamposDisciplina.forEach { campo ->
+            viewModelScope.launch {
+                disciplinaRepository.insertCampoDisciplina(campo)
+            }
         }
     }
 

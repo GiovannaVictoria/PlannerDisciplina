@@ -11,7 +11,7 @@ class DisciplinaRepository(private val disciplinaDao: DisciplinaDao) {
 
     fun getAllDisciplinas() = disciplinaDao.getAllDisciplinas()
 
-//    fun getDisciplinaById(id: Int) = disciplinaDao.getDisciplinaById(id)
+    fun getAllDisciplinaCampos() = disciplinaDao.getAllDisciplinaCampos()
 
     fun getCamposDisciplina(disciplinaId: Int) = disciplinaDao.getCamposDisciplina(disciplinaId)
 

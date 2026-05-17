@@ -4,8 +4,10 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
+import com.ufscar.devmovel.plannerdisciplina.model.DisciplinaCampos
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -18,6 +20,10 @@ interface DisciplinaDao {
 
     @Query("SELECT * FROM disciplina")
     fun getAllDisciplinas(): Flow<List<Disciplina>>
+
+    @Transaction
+    @Query("SELECT * FROM disciplina")
+    fun getAllDisciplinaCampos(): Flow<List<DisciplinaCampos>>
 
     @Query("SELECT * FROM campo_disciplina WHERE disciplinaId = :disciplinaId")
     fun getCamposDisciplina(disciplinaId: Int): Flow<List<CampoDisciplina>>
