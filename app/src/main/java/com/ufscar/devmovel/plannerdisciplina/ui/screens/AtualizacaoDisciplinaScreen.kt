@@ -56,6 +56,7 @@ import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.BottomBar
 import com.ufscar.devmovel.plannerdisciplina.R
 import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.TopBarAtualizacaoDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.CancelarAlteracoesCamposDialog
+import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.RemoverCampoDialog
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
@@ -66,6 +67,7 @@ fun AtualizacaoDisciplinaScreen(
     onNavigateToListaDisciplinas: () -> Unit
 ) {
     val disciplinaCampo = mainViewModel.listaDisciplinas.find { it.disciplina.id == disciplinaId }
+    val campoParaRemover = mainViewModel.campoParaRemover
 
     // TODO: Melhorar a pagina de "Disciplina nao encontrada"
     if (disciplinaCampo == null) {
@@ -224,7 +226,7 @@ fun AtualizacaoDisciplinaScreen(
                                         state = rememberTooltipState()
                                     ) {
                                         IconButton(
-                                            onClick = { mainViewModel.removerCampo(campo) }
+                                            onClick = { mainViewModel.abrirRemoverCampoDialog(campo) }
                                         ) {
                                             Icon(
                                                 Icons.Filled.Delete,
@@ -271,7 +273,6 @@ fun AtualizacaoDisciplinaScreen(
                                 )
                             }
                             Button(
-//                                onClick = { onNavigateToListaDisciplinas() },
                                 onClick = { mainViewModel.abrirCancelarAlteracoesCamposDialog() },
                                 colors = ButtonDefaults.buttonColors(Color.Red),
                                 contentPadding = PaddingValues(8.dp),
@@ -291,6 +292,9 @@ fun AtualizacaoDisciplinaScreen(
                 }
                 if (mainViewModel.cancelarAlteracoesCamposDialogAberto) {
                     CancelarAlteracoesCamposDialog(mainViewModel = mainViewModel, onNavigateToListaDisciplinas = onNavigateToListaDisciplinas)
+                }
+                if (campoParaRemover != null) {
+                    RemoverCampoDialog(mainViewModel = mainViewModel, campoDisciplina = campoParaRemover)
                 }
             }
         },

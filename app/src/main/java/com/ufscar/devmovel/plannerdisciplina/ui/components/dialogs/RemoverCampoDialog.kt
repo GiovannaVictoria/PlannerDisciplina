@@ -17,21 +17,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ufscar.devmovel.plannerdisciplina.R
-import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
+import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
-fun RemoverDisciplinaDialog(
+fun RemoverCampoDialog(
     mainViewModel: MainViewModel,
-    disciplina: Disciplina
+    campoDisciplina: CampoDisciplina
 ) {
     AlertDialog(
-        onDismissRequest = { mainViewModel.fecharRemoverDisciplinaDialog() },
+        onDismissRequest = { mainViewModel.fecharRemoverCampoDialog() },
         modifier = Modifier
             .fillMaxWidth(),
         title = {
             Text(
-                text = stringResource(R.string.confirmacao_remocao_disciplina),
+                text = stringResource(R.string.confirmacao_remocao_campo),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -39,7 +39,7 @@ fun RemoverDisciplinaDialog(
         },
         text = {
             Text(
-                text = stringResource(R.string.explicacao_remocao_disciplina),
+                text = stringResource(R.string.explicacao_remocao_campo),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -47,7 +47,7 @@ fun RemoverDisciplinaDialog(
         },
         confirmButton = {
             Button(
-                onClick = { mainViewModel.removerDisciplina(disciplina) },
+                onClick = { mainViewModel.removerCampo(campoDisciplina) },
                 colors = ButtonDefaults.buttonColors(Color.Red),
                 border = BorderStroke(1.dp, Color.Black),
                 shape = RoundedCornerShape(10.dp)
@@ -60,7 +60,7 @@ fun RemoverDisciplinaDialog(
         },
         dismissButton = {
             Button(
-                onClick = { mainViewModel.fecharRemoverDisciplinaDialog() },
+                onClick = { mainViewModel.fecharRemoverCampoDialog() },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 border = BorderStroke(1.dp, Color.Black),
                 shape = RoundedCornerShape(10.dp)
@@ -78,7 +78,7 @@ fun RemoverDisciplinaDialog(
         icon = {
             Icon(
                 Icons.Filled.Delete,
-                contentDescription = stringResource(R.string.remover_disciplina),
+                contentDescription = stringResource(R.string.remover_campo),
                 tint = Color.Black
             )
         }

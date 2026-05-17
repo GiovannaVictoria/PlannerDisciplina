@@ -32,7 +32,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ufscar.devmovel.plannerdisciplina.R
-import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.model.DisciplinaCampos
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
@@ -149,7 +148,7 @@ fun CardDisciplina(
                     )
                 }
                 Button(
-                    onClick = { mainViewModel.abrirConfirmacaoRemocaoDisciplinaDialog() },
+                    onClick = { mainViewModel.abrirRemoverDisciplinaDialog() },
                     colors = ButtonDefaults.buttonColors(Color.Red),
                     border = BorderStroke(1.dp, Color.Black),
                     shape = RoundedCornerShape(10.dp)

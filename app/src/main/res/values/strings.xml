@@ -26,9 +26,12 @@
     <string name="adicionar">Adicionar</string>
     <string name="adicao_campo">Adição de Campo</string>
     <string name="confirmacao_remocao_disciplina">Remover disciplina?</string>
+    <string name="confirmacao_remocao_campo">Remover campo?</string>
     <string name="explicacao_remocao_disciplina">Todos os dados desta disciplina serão apagados permanentemente.</string>
+    <string name="explicacao_remocao_campo">Todos os dados deste campo serão apagados permanentemente após o salvamento das alterações.</string>
     <string name="confirmacao_cancelamento_alteracoes_campos">Cancelar alterações?</string>
     <string name="explicacao_cancelamento_alteracoes_campos">Todas as alterações não salvas serão descartadas permanentemente.</string>
     <string name="voltar">Voltar</string>
     <string name="cancelar_alteracoes_campos">Cancelar alterações nos campos</string>
+    <string name="remover_campo">Remover campo</string>
 </resources>

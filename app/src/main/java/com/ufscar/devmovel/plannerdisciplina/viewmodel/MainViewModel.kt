@@ -12,7 +12,6 @@ import com.ufscar.devmovel.plannerdisciplina.ui.state.EstadoAtualizacaoDisciplin
 import com.ufscar.devmovel.plannerdisciplina.model.Disciplina
 import com.ufscar.devmovel.plannerdisciplina.model.DisciplinaCampos
 import kotlinx.coroutines.launch
-import kotlin.collections.remove
 
 class MainViewModel(
     private val disciplinaRepository: DisciplinaRepository
@@ -23,6 +22,7 @@ class MainViewModel(
     val listaTemporariaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     val listaRemocaoCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
+    var campoParaRemover by mutableStateOf<CampoDisciplina?>(null)
     var removerDisciplinaDialogAberto by mutableStateOf(false)
     var cancelarAlteracoesCamposDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina(0, 0))
@@ -123,6 +123,7 @@ class MainViewModel(
     fun removerCampo(campo: CampoDisciplina) {
         listaTemporariaCamposDisciplina.remove(campo)
         listaRemocaoCamposDisciplina.add(campo)
+        campoParaRemover = null
     }
 
     fun salvarAlteracoesDisciplina() {
@@ -150,11 +151,19 @@ class MainViewModel(
         adicaoCampoDialogAberto = false
     }
 
-    fun abrirConfirmacaoRemocaoDisciplinaDialog() {
+    fun abrirRemoverCampoDialog(campo: CampoDisciplina) {
+        campoParaRemover = campo
+    }
+
+    fun fecharRemoverCampoDialog() {
+        campoParaRemover = null
+    }
+
+    fun abrirRemoverDisciplinaDialog() {
         removerDisciplinaDialogAberto = true
     }
 
-    fun fecharConfirmacaoRemocaoDisciplinaDialog() {
+    fun fecharRemoverDisciplinaDialog() {
         removerDisciplinaDialogAberto = false
     }
 
