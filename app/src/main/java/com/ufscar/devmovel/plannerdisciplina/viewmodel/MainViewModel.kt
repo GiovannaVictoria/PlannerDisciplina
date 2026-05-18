@@ -22,7 +22,6 @@ class MainViewModel(
     val listaTemporariaCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     val listaRemocaoCamposDisciplina = mutableStateListOf<CampoDisciplina>()
     var adicaoCampoDialogAberto by mutableStateOf(false)
-    var campoParaRemover by mutableStateOf<CampoDisciplina?>(null)
     var removerDisciplinaDialogAberto by mutableStateOf(false)
     var cancelarAlteracoesCamposDialogAberto by mutableStateOf(false)
     var campoTemporario by mutableStateOf<CampoDisciplina>(CampoDisciplina(0, 0))
@@ -123,7 +122,6 @@ class MainViewModel(
     fun removerCampo(campo: CampoDisciplina) {
         listaTemporariaCamposDisciplina.remove(campo)
         listaRemocaoCamposDisciplina.add(campo)
-        campoParaRemover = null
     }
 
     fun salvarAlteracoesDisciplina() {
@@ -149,14 +147,6 @@ class MainViewModel(
 
     fun fecharAdicaoCampoDialog() {
         adicaoCampoDialogAberto = false
-    }
-
-    fun abrirRemoverCampoDialog(campo: CampoDisciplina) {
-        campoParaRemover = campo
-    }
-
-    fun fecharRemoverCampoDialog() {
-        campoParaRemover = null
     }
 
     fun abrirRemoverDisciplinaDialog() {

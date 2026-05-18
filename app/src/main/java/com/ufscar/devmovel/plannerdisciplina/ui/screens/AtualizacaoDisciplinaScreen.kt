@@ -56,7 +56,6 @@ import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.BottomBar
 import com.ufscar.devmovel.plannerdisciplina.R
 import com.ufscar.devmovel.plannerdisciplina.ui.components.bars.TopBarAtualizacaoDisciplinas
 import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.CancelarAlteracoesCamposDialog
-import com.ufscar.devmovel.plannerdisciplina.ui.components.dialogs.RemoverCampoDialog
 import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
@@ -67,7 +66,6 @@ fun AtualizacaoDisciplinaScreen(
     onNavigateToListaDisciplinas: () -> Unit
 ) {
     val disciplinaCampo = mainViewModel.listaDisciplinas.find { it.disciplina.id == disciplinaId }
-    val campoParaRemover = mainViewModel.campoParaRemover
 
     // TODO: Melhorar a pagina de "Disciplina nao encontrada"
     if (disciplinaCampo == null) {
@@ -144,31 +142,33 @@ fun AtualizacaoDisciplinaScreen(
                                 )
                             }
                         }
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceEvenly,
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .padding(4.dp)
-                                .fillMaxWidth()
-                        ) {
-                            Text(
-                                text = stringResource(R.string.campo),
-                                color = Color.White,
-                                fontSize = 24.sp,
+                        if (mainViewModel.listaTemporariaCamposDisciplina.isNotEmpty()) {
+                            Row(
+                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier
-                                    .background(Color(0xFF01037A), RoundedCornerShape(6.dp))
-                                    .border(1.dp, Color.Black, RoundedCornerShape(6.dp))
-                                    .padding(8.dp)
-                            )
-                            Text(
-                                text = stringResource(R.string.acoes),
-                                color = Color.White,
-                                fontSize = 24.sp,
-                                modifier = Modifier
-                                    .background(Color(0xFF01037A), RoundedCornerShape(6.dp))
-                                    .border(1.dp, Color.Black, RoundedCornerShape(6.dp))
-                                    .padding(8.dp)
-                            )
+                                    .padding(4.dp)
+                                    .fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.campo),
+                                    color = Color.White,
+                                    fontSize = 24.sp,
+                                    modifier = Modifier
+                                        .background(Color(0xFF01037A), RoundedCornerShape(6.dp))
+                                        .border(1.dp, Color.Black, RoundedCornerShape(6.dp))
+                                        .padding(8.dp)
+                                )
+                                Text(
+                                    text = stringResource(R.string.acoes),
+                                    color = Color.White,
+                                    fontSize = 24.sp,
+                                    modifier = Modifier
+                                        .background(Color(0xFF01037A), RoundedCornerShape(6.dp))
+                                        .border(1.dp, Color.Black, RoundedCornerShape(6.dp))
+                                        .padding(8.dp)
+                                )
+                            }
                         }
                         Column(
                             modifier = Modifier
@@ -226,7 +226,7 @@ fun AtualizacaoDisciplinaScreen(
                                         state = rememberTooltipState()
                                     ) {
                                         IconButton(
-                                            onClick = { mainViewModel.abrirRemoverCampoDialog(campo) }
+                                            onClick = { mainViewModel.removerCampo(campo) }
                                         ) {
                                             Icon(
                                                 Icons.Filled.Delete,
@@ -292,9 +292,6 @@ fun AtualizacaoDisciplinaScreen(
                 }
                 if (mainViewModel.cancelarAlteracoesCamposDialogAberto) {
                     CancelarAlteracoesCamposDialog(mainViewModel = mainViewModel, onNavigateToListaDisciplinas = onNavigateToListaDisciplinas)
-                }
-                if (campoParaRemover != null) {
-                    RemoverCampoDialog(mainViewModel = mainViewModel, campoDisciplina = campoParaRemover)
                 }
             }
         },
