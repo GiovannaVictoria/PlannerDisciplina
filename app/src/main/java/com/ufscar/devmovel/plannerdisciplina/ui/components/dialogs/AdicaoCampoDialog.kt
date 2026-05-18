@@ -82,7 +82,8 @@ fun AdicaoCampoDialog(
                     textStyle = TextStyle(
                             textAlign = TextAlign.Center,
                             color = Color.Black
-                    )
+                    ),
+                    modifier = Modifier.fillMaxWidth(0.6f)
                 )
                 OutlinedTextField(
                     value = mainViewModel.campoTemporario.valor,
@@ -97,7 +98,8 @@ fun AdicaoCampoDialog(
                     textStyle = TextStyle(
                         textAlign = TextAlign.Center,
                         color = Color.Black
-                    )
+                    ),
+                    modifier = Modifier.fillMaxWidth(0.6f)
                 )
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
@@ -119,13 +121,13 @@ fun AdicaoCampoDialog(
                     }
                     Button(
                         onClick = { mainViewModel.fecharAdicaoCampoDialog() },
-                        colors = ButtonDefaults.buttonColors(Color.Red),
-                        border = BorderStroke(1.dp, Color.Black),
+                        colors = ButtonDefaults.buttonColors(Color.White),
+                        border = BorderStroke(1.dp, Color(0xFF06B004)),
                         shape = RoundedCornerShape(10.dp)
                     ) {
                         Text(
-                            text = stringResource(R.string.cancelar),
-                            color = Color.White
+                            text = stringResource(R.string.voltar),
+                            color = Color(0xFF06B004)
                         )
                     }
                 }
