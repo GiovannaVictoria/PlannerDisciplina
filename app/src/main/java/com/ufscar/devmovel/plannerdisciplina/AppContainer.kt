@@ -9,7 +9,7 @@ class AppContainer(private var context: Context) {
         DisciplinaRepository(AppDatabase.getDatabase(context).disciplinaDao())
     }
 
-    val zenQuotesRepository: ZenQuotesRepository by lazy {
-        ZenQuotesRepository()
+    val dummyQuotesRepository: DummyQuotesRepository by lazy {
+        DummyQuotesRepository()
     }
 }

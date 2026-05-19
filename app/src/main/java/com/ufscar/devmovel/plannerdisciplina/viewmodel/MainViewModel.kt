@@ -1,13 +1,12 @@
 package com.ufscar.devmovel.plannerdisciplina.viewmodel
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ufscar.devmovel.plannerdisciplina.ZenQuotesRepository
+import com.ufscar.devmovel.plannerdisciplina.DummyQuotesRepository
 import com.ufscar.devmovel.plannerdisciplina.data.repository.DisciplinaRepository
 import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 import com.ufscar.devmovel.plannerdisciplina.ui.state.EstadoAtualizacaoDisciplina
@@ -17,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val disciplinaRepository: DisciplinaRepository,
-    private val zenQuotesRepository: ZenQuotesRepository
+    private val dummyQuotesRepository: DummyQuotesRepository
 ) : ViewModel() {
     var estadoTemporarioDisciplina by mutableStateOf(EstadoAtualizacaoDisciplina())
     val listaDisciplinas = mutableStateListOf<DisciplinaCampos>()
@@ -43,20 +42,20 @@ class MainViewModel(
         }
         viewModelScope.launch {
             try {
-                var quote = zenQuotesRepository.getQuote()
-                while (quote.content.length > 160) {
-                    quote = zenQuotesRepository.getQuote()
+                var quote = dummyQuotesRepository.getQuote()
+                while (quote.content.length > 100) {
+                    quote = dummyQuotesRepository.getQuote()
                 }
                 quoteContent = quote.content
                 quoteAuthor = quote.author
-                formattedQuote = formatarZenQuote(quoteContent, quoteAuthor)
+                formattedQuote = formatarQuote(quoteContent, quoteAuthor)
             } catch (e: Exception) {
                 formattedQuote = "Giovanna Victoria Rossetto"
             }
         }
     }
 
-    fun formatarZenQuote(content: String, author: String): String {
+    fun formatarQuote(content: String, author: String): String {
         var formattedQuote = '"' + content[0].uppercase() + content.substring(1).lowercase()
         if (formattedQuote.last() != '.') {
             formattedQuote += '.'

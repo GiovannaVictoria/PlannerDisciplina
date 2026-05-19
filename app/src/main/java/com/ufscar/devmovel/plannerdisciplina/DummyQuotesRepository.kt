@@ -1,13 +1,13 @@
 package com.ufscar.devmovel.plannerdisciplina
 
-class ZenQuotesRepository {
+class DummyQuotesRepository {
     private val api = RetrofitInstance.api
 
-    suspend fun getAllQuotes(): List<ZenQuotesResponse> {
+    suspend fun getAllQuotes(): List<DummyQuotesResponse> {
         return api.getAllQuotes()
     }
 
-    suspend fun getQuote(): ZenQuotesResponse {
+    suspend fun getQuote(): DummyQuotesResponse {
         return api.getQuote()
     }
 }

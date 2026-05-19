@@ -9,7 +9,7 @@ import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 object AppViewModelProvider {
     val Factory = viewModelFactory {
         initializer {
-            MainViewModel(plannerApplication().container.disciplinaRepository, plannerApplication().container.zenQuotesRepository)
+            MainViewModel(plannerApplication().container.disciplinaRepository, plannerApplication().container.dummyQuotesRepository)
         }
     }
 }
