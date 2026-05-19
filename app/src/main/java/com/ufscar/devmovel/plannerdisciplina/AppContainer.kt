@@ -8,4 +8,8 @@ class AppContainer(private var context: Context) {
     val disciplinaRepository: DisciplinaRepository by lazy {
         DisciplinaRepository(AppDatabase.getDatabase(context).disciplinaDao())
     }
+
+    val zenQuotesRepository: ZenQuotesRepository by lazy {
+        ZenQuotesRepository()
+    }
 }

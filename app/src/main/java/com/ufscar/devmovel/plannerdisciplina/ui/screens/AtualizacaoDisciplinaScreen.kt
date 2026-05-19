@@ -295,6 +295,6 @@ fun AtualizacaoDisciplinaScreen(
                 }
             }
         },
-        bottomBar = { BottomBar() }
+        bottomBar = { BottomBar(mainViewModel = mainViewModel) }
     )
 }

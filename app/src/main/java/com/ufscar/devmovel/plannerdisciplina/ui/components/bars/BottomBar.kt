@@ -21,9 +21,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ufscar.devmovel.plannerdisciplina.R
+import com.ufscar.devmovel.plannerdisciplina.viewmodel.MainViewModel
 
 @Composable
-fun BottomBar() {
+fun BottomBar(
+    mainViewModel: MainViewModel
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,22 +43,22 @@ fun BottomBar() {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.icone_copyright),
-                    contentDescription = stringResource(R.string.copyright),
-                    tint = Color.White,
-                    modifier = Modifier
-                        .size(25.dp)
-                )
-                Spacer(
-                    modifier = Modifier
-                        .width(4.dp)
-                )
+//                Icon(
+//                    painter = painterResource(R.drawable.icone_copyright),
+//                    contentDescription = stringResource(R.string.copyright),
+//                    tint = Color.White,
+//                    modifier = Modifier
+//                        .size(25.dp)
+//                )
+//                Spacer(
+//                    modifier = Modifier
+//                        .width(4.dp)
+//                )
                 Text(
-                    text = stringResource(R.string.giovanna_victoria_rossetto),
+                    text = mainViewModel.formattedQuote,
                     textAlign = TextAlign.Center,
                     color = Color.White,
-                    fontSize = 24.sp
+                    fontSize = 18.sp
                 )
             }
         }
