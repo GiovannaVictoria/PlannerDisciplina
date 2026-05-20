@@ -10,8 +10,8 @@ Planner Disciplina é um planejador de disciplinas escolares/acadêmicas desenvo
 ## Funcionalidades
 
 O sistema oferece as seguintes funções:
-    - Adição e remoção de disciplinas
-    - Adição, alteração e remoção de campos dentro das disciplinas
+- Adição e remoção de disciplinas
+- Adição, alteração e remoção de campos dentro das disciplinas
 
 ## Como executar
 
