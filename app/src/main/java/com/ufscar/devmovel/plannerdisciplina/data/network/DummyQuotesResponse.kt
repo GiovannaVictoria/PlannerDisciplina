@@ -1,4 +1,4 @@
-package com.ufscar.devmovel.plannerdisciplina
+package com.ufscar.devmovel.plannerdisciplina.data.network
 
 import com.google.gson.annotations.SerializedName
 

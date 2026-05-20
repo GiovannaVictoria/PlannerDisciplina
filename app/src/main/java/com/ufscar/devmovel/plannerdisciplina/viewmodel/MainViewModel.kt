@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ufscar.devmovel.plannerdisciplina.DummyQuotesRepository
+import com.ufscar.devmovel.plannerdisciplina.data.repository.DummyQuotesRepository
 import com.ufscar.devmovel.plannerdisciplina.data.repository.DisciplinaRepository
 import com.ufscar.devmovel.plannerdisciplina.model.CampoDisciplina
 import com.ufscar.devmovel.plannerdisciplina.ui.state.EstadoAtualizacaoDisciplina

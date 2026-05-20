@@ -1,4 +1,7 @@
-package com.ufscar.devmovel.plannerdisciplina
+package com.ufscar.devmovel.plannerdisciplina.data.repository
+
+import com.ufscar.devmovel.plannerdisciplina.data.network.DummyQuotesResponse
+import com.ufscar.devmovel.plannerdisciplina.data.network.RetrofitInstance
 
 class DummyQuotesRepository {
     private val api = RetrofitInstance.api

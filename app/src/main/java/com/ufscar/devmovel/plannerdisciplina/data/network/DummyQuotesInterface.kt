@@ -1,4 +1,4 @@
-package com.ufscar.devmovel.plannerdisciplina
+package com.ufscar.devmovel.plannerdisciplina.data.network
 
 import retrofit2.http.GET
 

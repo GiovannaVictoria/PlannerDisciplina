@@ -55,6 +55,7 @@ fun BottomBar(
 //                        .width(4.dp)
 //                )
                 Text(
+//                    text = mainViewModel.formattedQuote.let{ if (it == "a") "Y" else "X" },
                     text = mainViewModel.formattedQuote,
                     textAlign = TextAlign.Center,
                     color = Color.White,
