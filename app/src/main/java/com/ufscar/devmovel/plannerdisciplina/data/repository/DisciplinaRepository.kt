@@ -11,6 +11,8 @@ class DisciplinaRepository(private val disciplinaDao: DisciplinaDao) {
 
     suspend fun updateNomeDisciplina(id: Int, nome: String) = disciplinaDao.updateNomeDisciplina(id, nome)
 
+    fun getAllDisciplinas() = disciplinaDao.getAllDisciplinas()
+
     fun getAllDisciplinaCampos() = disciplinaDao.getAllDisciplinaCampos()
 
     fun getCamposDisciplina(disciplinaId: Int) = disciplinaDao.getCamposDisciplina(disciplinaId)

@@ -23,6 +23,9 @@ interface DisciplinaDao {
     @Query("UPDATE disciplina SET nome = :nome WHERE id = :id")
     suspend fun updateNomeDisciplina(id: Int, nome: String)
 
+    @Query("SELECT * FROM disciplina")
+    fun getAllDisciplinas(): Flow<List<Disciplina>>
+
     @Transaction
     @Query("SELECT * FROM disciplina")
     fun getAllDisciplinaCampos(): Flow<List<DisciplinaCampos>>
