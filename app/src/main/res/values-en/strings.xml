@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Course Planner</string>
+    <string name="icone_adicionar_imagem_default">Default icon "Add Image"</string>
+    <string name="nome_disciplina">Name of the Subject</string>
+    <string name="professor">Teacher</string>
+    <string name="sala">Classroom Number</string>
+    <string name="horario">Time</string>
+    <string name="atualizar_campos">Update fields</string>
+    <string name="remover_disciplina">Delete subject</string>
+    <string name="campo">Field</string>
+    <string name="acoes">Actions</string>
+    <string name="editar">Update</string>
+    <string name="remover">Delete</string>
+    <string name="salvar">Save</string>
+    <string name="novo_campo">New Field</string>
+    <string name="cancelar">Cancel</string>
+    <string name="ola">Hello</string>
+    <string name="menu">Menu</string>
+    <string name="adicionar_card">Add Card</string>
+    <string name="fundo_papel">Paper Background</string>
+    <string name="giovanna_victoria_rossetto">Giovanna Victória Rossetto</string>
+    <string name="copyright">Copyright</string>
+    <string name="atualizacao_campos">Field Update</string>
+    <string name="nome_campo">Field name</string>
+    <string name="valor_campo">Field value</string>
+    <string name="adicionar">Add</string>
+    <string name="adicao_campo">Field Addition</string>
+    <string name="confirmacao_remocao_disciplina">Delete this subject?</string>
+    <string name="explicacao_remocao_disciplina">All data associated with this subject will be permanently deleted.</string>
+    <string name="confirmacao_cancelamento_alteracoes_campos">Cancel changes?</string>
+    <string name="explicacao_cancelamento_alteracoes_campos">All unsaved changes will be permanently discarded.</string>
+    <string name="voltar">Back</string>
+    <string name="cancelar_alteracoes_campos">Cancel field changes</string> 
+</resources>
