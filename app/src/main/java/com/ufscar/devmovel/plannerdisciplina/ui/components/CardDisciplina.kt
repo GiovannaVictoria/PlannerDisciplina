@@ -59,38 +59,40 @@ fun CardDisciplina(
                     .padding(4.dp)
                     .fillMaxWidth()
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.adicionar_imagem_default),
-                    contentDescription = stringResource(id = R.string.icone_adicionar_imagem_default),
-                    modifier = Modifier
-                        .size(70.dp)
-                        .clip(CircleShape)
-                        .border(2.dp, Color.Black, CircleShape)
-                )
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    modifier = Modifier
-                        .padding(4.dp)
-                ) {
+//                Image(
+//                    painter = painterResource(id = R.drawable.adicionar_imagem_default),
+//                    contentDescription = stringResource(id = R.string.icone_adicionar_imagem_default),
+//                    modifier = Modifier
+//                        .size(70.dp)
+//                        .clip(CircleShape)
+//                        .border(2.dp, Color.Black, CircleShape)
+//                )
+//                Column(
+//                    horizontalAlignment = Alignment.CenterHorizontally,
+//                    verticalArrangement = Arrangement.spacedBy(16.dp),
+//                    modifier = Modifier
+//                        .padding(4.dp)
+//                ) {
                     Text(
                         text = disciplinaCampos.disciplina.nome,
                         fontSize = 24.sp,
                         textAlign = TextAlign.Center,
-                        color = Color.Black
-                    )
-                    LinearProgressIndicator(
-                        progress = { disciplinaCampos.disciplina.progresso },
+                        color = Color.Black,
                         modifier = Modifier
-                            .height(16.dp)
-                            .border(1.dp, Color.Black),
-                        gapSize = 0.dp,
-                        strokeCap = StrokeCap.Butt,
-                        drawStopIndicator = {},
-                        trackColor = Color.LightGray,
-                        color = Color(0xFF06B004)
+                            .padding(4.dp)
                     )
-                }
+//                    LinearProgressIndicator(
+//                        progress = { disciplinaCampos.disciplina.progresso },
+//                        modifier = Modifier
+//                            .height(16.dp)
+//                            .border(1.dp, Color.Black),
+//                        gapSize = 0.dp,
+//                        strokeCap = StrokeCap.Butt,
+//                        drawStopIndicator = {},
+//                        trackColor = Color.LightGray,
+//                        color = Color(0xFF06B004)
+//                    )
+//                }
             }
             Column(
                 modifier = Modifier

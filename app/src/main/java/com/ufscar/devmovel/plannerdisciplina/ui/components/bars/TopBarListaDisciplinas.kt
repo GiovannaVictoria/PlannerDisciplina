@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -46,24 +47,42 @@ fun TopBarListaDisciplinas(
         CenterAlignedTopAppBar(
             title = {
                 Text(
-                    text = stringResource(R.string.ola),
+                    text = stringResource(R.string.planner),
                     color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
             },
             navigationIcon = {
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(Color.White),
-                    contentPadding = PaddingValues(10.dp),
-                    shape = RoundedCornerShape(12.dp)
+//                Button(
+//                    onClick = {},
+//                    colors = ButtonDefaults.buttonColors(Color.White),
+//                    contentPadding = PaddingValues(10.dp),
+//                    shape = RoundedCornerShape(12.dp)
+//                ) {
+//                    Text(
+//                        text = stringResource(R.string.menu),
+//                        color = Color(0xFF01037A),
+//                        fontWeight = FontWeight.Bold,
+//                        fontSize = 20.sp
+//                    )
+//                }
+                TooltipBox(
+                    positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+                    tooltip = { PlainTooltip { Text(text = stringResource(R.string.informacoes)) } },
+                    state = rememberTooltipState()
                 ) {
-                    Text(
-                        text = stringResource(R.string.menu),
-                        color = Color(0xFF01037A),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp
-                    )
+                    IconButton(
+                        onClick = {},
+                        modifier = Modifier
+                            .border(1.dp, Color.Blue, CircleShape)
+                            .background(Color.White, CircleShape)
+                    ) {
+                        Icon(
+                            Icons.Filled.Info,
+                            contentDescription = stringResource(R.string.informacoes),
+                            tint = Color(0xFF01037A)
+                        )
+                    }
                 }
             },
             actions = {

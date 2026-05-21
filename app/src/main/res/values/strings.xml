@@ -31,4 +31,6 @@
     <string name="explicacao_cancelamento_alteracoes_campos">Todas as alterações não salvas serão descartadas permanentemente.</string>
     <string name="voltar">Voltar</string>
     <string name="cancelar_alteracoes_campos">Cancelar alterações nos campos</string>
+    <string name="informacoes">Informações</string>
+    <string name="planner">Planner</string>
 </resources>

@@ -32,4 +32,6 @@
     <string name="explicacao_cancelamento_alteracoes_campos">All unsaved changes will be permanently discarded.</string>
     <string name="voltar">Back</string>
     <string name="cancelar_alteracoes_campos">Cancel field changes</string>
+    <string name="informacoes">Information</string>
+    <string name="planner">Planner</string>
 </resources>

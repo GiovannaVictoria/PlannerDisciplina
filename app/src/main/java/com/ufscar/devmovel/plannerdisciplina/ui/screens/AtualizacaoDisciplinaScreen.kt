@@ -105,21 +105,21 @@ fun AtualizacaoDisciplinaScreen(
                             modifier = Modifier
                                 .padding(8.dp)
                         ) {
-                            Image(
-                                painter = painterResource(R.drawable.adicionar_imagem_default),
-                                contentDescription = stringResource(id = R.string.icone_adicionar_imagem_default),
-                                modifier = Modifier
-                                    .size(70.dp)
-                                    .clip(CircleShape)
-                                    .border(2.dp, Color.Black, CircleShape)
-                            )
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.spacedBy(16.dp),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(4.dp)
-                            ) {
+//                            Image(
+//                                painter = painterResource(R.drawable.adicionar_imagem_default),
+//                                contentDescription = stringResource(id = R.string.icone_adicionar_imagem_default),
+//                                modifier = Modifier
+//                                    .size(70.dp)
+//                                    .clip(CircleShape)
+//                                    .border(2.dp, Color.Black, CircleShape)
+//                            )
+//                            Column(
+//                                horizontalAlignment = Alignment.CenterHorizontally,
+//                                verticalArrangement = Arrangement.spacedBy(16.dp),
+//                                modifier = Modifier
+//                                    .fillMaxWidth()
+//                                    .padding(4.dp)
+//                            ) {
                                 BasicTextField(
                                     value = mainViewModel.estadoTemporarioDisciplina.disciplina.nome,
                                     onValueChange = { mainViewModel.alterarEstadoTemporarioNome(it) },
@@ -127,20 +127,22 @@ fun AtualizacaoDisciplinaScreen(
                                         textAlign = TextAlign.Center,
                                         color = Color.Black,
                                         fontSize = 24.sp
-                                    )
-                                )
-                                LinearProgressIndicator(
-                                    progress = { disciplinaCampo.disciplina.progresso },
+                                    ),
                                     modifier = Modifier
-                                        .height(16.dp)
-                                        .border(1.dp, Color.Black),
-                                    gapSize = 0.dp,
-                                    strokeCap = StrokeCap.Butt,
-                                    drawStopIndicator = {},
-                                    trackColor = Color.LightGray,
-                                    color = Color(0xFF06B004)
+                                        .padding(4.dp)
                                 )
-                            }
+//                                LinearProgressIndicator(
+//                                    progress = { disciplinaCampo.disciplina.progresso },
+//                                    modifier = Modifier
+//                                        .height(16.dp)
+//                                        .border(1.dp, Color.Black),
+//                                    gapSize = 0.dp,
+//                                    strokeCap = StrokeCap.Butt,
+//                                    drawStopIndicator = {},
+//                                    trackColor = Color.LightGray,
+//                                    color = Color(0xFF06B004)
+//                                )
+//                            }
                         }
                         if (mainViewModel.listaTemporariaCamposDisciplina.isNotEmpty()) {
                             Row(
